@@ -1,5 +1,9 @@
 # Nic
 
+files/
+raw/
+processed/
+test/
 data/
 log/
 .DS_Store
