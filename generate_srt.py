@@ -42,8 +42,8 @@ print()
 
 import whisper
 
-file_path = '/Users/nic/Python/transcribee/test/how to make aeroplane with ice cream sticks  Gulfstream G560  #gulfstream #diy.mp4'
-output_path = '/Users/nic/Python/transcribee/test/'
+file_path = '/Users/.....'
+output_path = f'/Users/{USER}/Python/transcribee/test/'
 language = 'en'
 
 from typing import Iterator, TextIO
