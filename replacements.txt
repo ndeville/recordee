@@ -50,5 +50,8 @@ we were|reword
 smiley face|😁
 open quote|"
 close quote|"
+close parenthesis|)
+open parenthesis|(
+close quote|"
 # every input lower case
 # always leave an empty line at the end
