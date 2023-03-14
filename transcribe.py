@@ -235,10 +235,16 @@ def add_to_voice_memos_txt(memo_transcript, uid, full_path, transcribe_language)
 
     publish_date = f"{uid[:4]}-{uid[4:6]}-{uid[6:8]}"
 
-    output = f"\n{full_path}\n{publish_date} | {transcribe_language}\n---\n{memo_transcript}\n\n"
+    # output = f"\n{full_path}\n{publish_date} | {transcribe_language}\n---\n{memo_transcript}\n\n"
+    output = f"> source: {full_path}\n\n\n{memo_transcript}\n"
 
-    with open(f'/Users/{USER}/Python/homee/voice-memos.txt', 'a') as f:
-        print(output, file=f)
+    markdown_path = f"/Users/{USER}/Python/homee/internal/voice-memos/{uid}.md"
+
+    # with open(f'/Users/{USER}/Python/homee/voice-memos.txt', 'a') as f:
+    #     print(output, file=f)
+    
+    with open(markdown_path, 'w') as f:
+        f.write(output)
 
 def define_uid(run, full_path, filename):
     if v:
@@ -361,6 +367,7 @@ def processing(file='', v=v):
                                 transcript = clean_transcript(raw_transcribe, uid)
                                 if v:
                                     f"#{get_linenumber()} {transcript=}"
+
                                 add_to_voice_memos_txt(transcript, uid, copy_to_path, transcribe_language)
 
                                     ### Log if successful
