@@ -440,7 +440,8 @@ def processing(file='', v=v):
     else:
         print(f"{get_linenumber()} WRONG parameter passed. Should be empty or starting with /Users/")
 
-
+x = processing('/Users/nic/Downloads/_transcribe/230412-bbc-elon-interview.mp4')
+print(x)
 
 ########################################################################################################
 
