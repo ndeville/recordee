@@ -121,32 +121,36 @@ def capitalise_sentence(og_string, v=False):
     return final
 
 def clean_beginning_string(string_input, v=False):
-    if string_input not in [None, '', ' ', '-', ' - ']:
-        if v:
-            print(f"\n---\nclean_beginning_string processing {repr(string_input)}")
-        valid = False
-        for i in range(1,21): # run enough time
-            if valid == False: # run as long as 1st character is not alphabetical
-                first_letter = string_input[0]
-                if not first_letter.isalpha():
-                    string_input = string_input[1:]
-                    if v:
-                        print(f"{string_input}")
-                    
+    try:
+        if string_input not in [None, '', ' ', '-', ' - ', '.']:
+            if v:
+                print(f"\n---\nclean_beginning_string processing {repr(string_input)}")
+            valid = False
+            for i in range(1,21): # run enough time
+                if valid == False: # run as long as 1st character is not alphabetical
+                    first_letter = string_input[0]
+                    if not first_letter.isalpha():
+                        string_input = string_input[1:]
+                        if v:
+                            print(f"{string_input}")
+                        
+                    else:
+                        valid = True
                 else:
-                    valid = True
+                    break # break loop once 1st character is alphabetical
+            # Capitalise
+            if not string_input[0].isupper():
+                string_output = string_input.replace(string_input[0], string_input[0].upper(), 1) # replace only first occurence of character with capital
             else:
-                break # break loop once 1st character is alphabetical
-        # Capitalise
-        if not string_input[0].isupper():
-            string_output = string_input.replace(string_input[0], string_input[0].upper(), 1) # replace only first occurence of character with capital
+                string_output = string_input
         else:
             string_output = string_input
-    else:
-        string_output = string_input
-    if v:
-        print(f"{string_output=}")
-    return string_output
+        if v:
+            print(f"{string_output=}")
+        return string_output
+    except Exception as e:
+        print(f"\n\nERROR {e} with {string_input=}")
+        return string_input
 
 def clean_transcript(transcript, uid):
     global v
