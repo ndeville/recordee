@@ -14,6 +14,7 @@ full step|.
 full-step|.
 full-stop|.
 for stop|.
+4 stop|.
 forstub|.
 for step|.
 fullstop|.

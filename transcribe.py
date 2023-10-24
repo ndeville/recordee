@@ -55,6 +55,9 @@ def separator(count=50, lines=3, symbol='='):
     separator = f"\n{separator * lines}"
     print(separator)
 
+
+
+
 def transcribe(file_path, uid):
     global v
 
@@ -89,6 +92,9 @@ def transcribe(file_path, uid):
 
     return final # namedtuple `transcript``: (transcript.text, transcript.language)
 
+
+
+
 def capitalise_sentence(og_string, v=False):
     if v:
         print(f"\n---start verbose capitalise_sentence (deactivate with v=False)")
@@ -119,6 +125,9 @@ def capitalise_sentence(og_string, v=False):
     if v:
         print(f"\nreturned repr(final)={repr(final)}\n\n---end verbose capitalise_sentence\n")
     return final
+
+
+
 
 def clean_beginning_string(string_input, v=False):
     try:
@@ -151,6 +160,9 @@ def clean_beginning_string(string_input, v=False):
     except Exception as e:
         print(f"\n\nERROR {e} with {string_input=}")
         return string_input
+
+
+
 
 def clean_transcript(transcript, uid):
     global v
@@ -234,21 +246,37 @@ def clean_transcript(transcript, uid):
 
     return final_output
 
+
+
+
 def add_to_voice_memos_txt(memo_transcript, uid, full_path, transcribe_language):
     global v
 
     publish_date = f"{uid[:4]}-{uid[4:6]}-{uid[6:8]}"
 
     # output = f"\n{full_path}\n{publish_date} | {transcribe_language}\n---\n{memo_transcript}\n\n"
-    output = f"> source: {full_path}\n\n\n{memo_transcript}\n"
+    output = f"\n\n> source: {full_path}\n\n\n{memo_transcript}\n"
 
-    markdown_path = f"/Users/{USER}/Python/homee/internal/voice-memos/{uid}.md"
+    # markdown_path = f"/Users/{USER}/Python/homee/internal/voice-memos/{uid}.md"
+    # markdown_path = f"/Users/nic/Dropbox/Notes/voice-memos/{uid}.md"
+    markdown_path = f"/Users/nic/Dropbox/Notes/voice-memos/{uid[2:8]}.md"
+
+    # If note already exists in voice-memos folder for that day, append to it
+    if os.path.exists(markdown_path):
+        with open(markdown_path, 'a') as f:
+            f.write(output)
+    # Else create new note for that day
+    else:
+        with open(markdown_path, 'w') as f:
+            f.write(output)
 
     # with open(f'/Users/{USER}/Python/homee/voice-memos.txt', 'a') as f:
     #     print(output, file=f)
     
-    with open(markdown_path, 'w') as f:
-        f.write(output)
+
+
+
+
 
 def define_uid(run, full_path, filename):
     if v:
@@ -274,6 +302,9 @@ def define_uid(run, full_path, filename):
         if v:
             print(f"{uid=}")
     return uid
+
+
+
 
 def processing(file='', v=v):
     global count_recordings
