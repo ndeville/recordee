@@ -335,8 +335,9 @@ def processing(file='', v=v):
         print()
 
         folder_paths = [
-            f"/Users/{USER}/Library/Mobile Documents/iCloud~com~openplanetsoftware~just-press-record/Documents", # JustPressRecord / returns partly `.icloud` files
-            f"/Users/{USER}/Library/Application Support/com.apple.voicememos/Recordings", # Apple Voice Memos
+            # f"/Users/{USER}/Library/Mobile Documents/iCloud~com~openplanetsoftware~just-press-record/Documents", # JustPressRecord / returns partly `.icloud` files
+            f"/Users/{USER}/Library/Application Support/com.apple.voicememos/Recordings", # Apple Voice Memos OLD
+            f"/Users/{USER}/Library/Containers/com.apple.VoiceMemos/Data", # Apple Voice Memos NEW
         ]
 
         for folder_path in folder_paths:
@@ -478,14 +479,25 @@ def processing(file='', v=v):
 # x = processing('/Users/nic/Downloads/_transcribe/230412-bbc-elon-interview.mp4')
 # print(x)
 
-processing('all')
+
+
+
+# 2023-12-15 07:05 DOES NOT WORK ANYMORE SINCE 22nd NOV
+
+# New path with no access rights:       
+# /Users/nic/Library/Containers/com.apple.VoiceMemos/Data/tmp/.com.apple.uikit.itemprovider.temporary.JcmHtf/Recording 269.m4a
+# vs. old path
+# /Users/nic/Library/Application Support/com.apple.voicememos/Recordings
+# Need to figure out how to get the recordings automatically
+
 
 
 ########################################################################################################
 
 if __name__ == '__main__':
     print()
-    processing(file=sys.argv[1])
+    # processing(file=sys.argv[1])
+    processing('/Users/nic/Movies/Videos_download/The ROI of ABSD.mp4')
     print('-------------------------------')
     print(f"{os.path.basename(__file__)}")
     print()

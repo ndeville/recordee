@@ -41,9 +41,28 @@ count = 0
 
 
 
-test_string = '20231014-172348.md'
 
-print(test_string[2:8])
+# Loop through all files and folders in the directory, including hidden files and folders
+
+path = '/Users/nic/Library/Containers/com.apple.VoiceMemos/Data'
+
+for entry in os.scandir(path):
+    if entry.is_dir(follow_symlinks=False):
+        print(entry.path)
+    elif entry.is_file(follow_symlinks=False):
+        print(entry.path)
+    else:
+        print('Unknown:', entry.path)
+
+
+
+
+
+
+
+
+
+
 
 
 
