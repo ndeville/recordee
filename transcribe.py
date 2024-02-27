@@ -497,7 +497,7 @@ def processing(file='', v=v):
 if __name__ == '__main__':
     print()
     # processing(file=sys.argv[1])
-    processing('/Users/nic/Movies/Videos_download/The ROI of ABSD.mp4')
+    processing('/Users/nic/Dropbox/Kaltura/clients/altice/240131-KA Altice Meeting.mp4')
     print('-------------------------------')
     print(f"{os.path.basename(__file__)}")
     print()
