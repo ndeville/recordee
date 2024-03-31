@@ -32,7 +32,7 @@ print()
 
 #### DEFAULT PARAMETERS
 count_to_do = 100 # can be capped for tests
-v = True # verbose flag / can be overridden as a function parameter to be passed
+v = False # verbose flag / can be overridden as a function parameter to be passed
 ####
 
 import whisper
@@ -56,10 +56,11 @@ def separator(count=50, lines=3, symbol='='):
     print(separator)
 
 
-
+# language = 'english'
 
 def transcribe(file_path, uid):
     global v
+    global language
 
     if v:
         print(f"\n#{get_linenumber()} transcribe {file_path=}")
@@ -465,9 +466,12 @@ def processing(file='', v=v):
 
         output = f"\n{file}\ntranscribed: {ts_db} | {transcribe_language}\n---\n{transcript}\n\n"
 
-        # ### txt
-        # with open(f"{copy_to_path}/{uid}.txt", 'w') as f:
-        #     print(output, file=f)
+        ### txt
+        output_file = f"{copy_to_path}/{uid}.txt"
+        with open(output_file, 'w') as f:
+            print(output, file=f)
+        print(f"\n{output_file} created.")
+
 
         # # SRT
         # with open(f"{copy_to_path}/{uid}.srt", 'w') as srt:
@@ -497,7 +501,8 @@ def processing(file='', v=v):
 if __name__ == '__main__':
     print()
     # processing(file=sys.argv[1])
-    processing('/Users/nic/Dropbox/Kaltura/clients/altice/240131-KA Altice Meeting.mp4')
+    language = 'english'
+    processing('/Users/nic/Movies/Recordings/240326-KA BT ABB Meeting.mp4')
     print('-------------------------------')
     print(f"{os.path.basename(__file__)}")
     print()
