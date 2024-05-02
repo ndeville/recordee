@@ -339,11 +339,12 @@ def processing(file='', v=v):
             # f"/Users/{USER}/Library/Mobile Documents/iCloud~com~openplanetsoftware~just-press-record/Documents", # JustPressRecord / returns partly `.icloud` files
             f"/Users/{USER}/Library/Application Support/com.apple.voicememos/Recordings", # Apple Voice Memos OLD
             f"/Users/{USER}/Library/Containers/com.apple.VoiceMemos/Data", # Apple Voice Memos NEW
+            f"/Users/nic/Dropbox/voice-memos", # Apple Voice Memos NEW
         ]
 
         for folder_path in folder_paths:
 
-            if 'apple.voicememos' in folder_path:
+            if 'apple.voicememos' in folder_path or 'voice-memos' in folder_path:
                 run = 'Apple'
             elif 'just-press-record' in folder_path:
                 run = 'JustPressRecord'
@@ -502,7 +503,7 @@ if __name__ == '__main__':
     print()
     # processing(file=sys.argv[1])
     language = 'english'
-    processing('/Users/nic/Movies/Recordings/240326-KA BT ABB Meeting.mp4')
+    processing('/Users/nic/Dropbox/Kaltura/clients/nestle/Powtoon Nestle Webinar - Brewing Success - Recipe for Impactful Learning.mp4')
     print('-------------------------------')
     print(f"{os.path.basename(__file__)}")
     print()

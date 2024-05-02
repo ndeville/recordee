@@ -21,11 +21,14 @@ fullstop|.
 fostop|.
 false stop|.
 false top|.
+fold step|.
 forstup|.
 come up|,
 call in|:
 colin|:
 colon|:
+comma|,
+coma|,
 commons|comments
  c | see 
 We were|Reword
