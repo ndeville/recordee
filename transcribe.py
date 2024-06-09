@@ -503,7 +503,7 @@ if __name__ == '__main__':
     print()
     # processing(file=sys.argv[1])
     language = 'english'
-    processing('/Users/nic/Dropbox/Kaltura/clients/nestle/Powtoon Nestle Webinar - Brewing Success - Recipe for Impactful Learning.mp4')
+    processing('/Users/nic/Movies/Recordings/240508-154014.mp4')
     print('-------------------------------')
     print(f"{os.path.basename(__file__)}")
     print()
