@@ -502,8 +502,8 @@ def processing(file='', v=v):
 if __name__ == '__main__':
     print()
     # processing(file=sys.argv[1])
-    language = 'english'
-    processing('/Users/nic/Movies/Recordings/240508-154014.mp4')
+    language = 'german'
+    processing('/Users/nic/Dropbox/Kaltura/clients/siemens/240621-KA Siemens Procurement.mp4')
     print('-------------------------------')
     print(f"{os.path.basename(__file__)}")
     print()
