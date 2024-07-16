@@ -432,7 +432,7 @@ def processing(file='', v=v):
                             print(f"\n{uid} already transcribed.")
                             count_already_transcribed += 1
 
-    elif file.startswith('/Users/'):
+    elif file.startswith('/Users/') or file.startswith('/Volumes/NicVid/'):
 
         """
         PROCESS A SINGLE RECORDING
@@ -502,8 +502,8 @@ def processing(file='', v=v):
 if __name__ == '__main__':
     print()
     # processing(file=sys.argv[1])
-    language = 'german'
-    processing('/Users/nic/Dropbox/Kaltura/clients/siemens/240621-KA Siemens Procurement.mp4')
+    language = 'english'
+    processing('/Volumes/NicVid/240626-KA Product Roadmap.mp4')
     print('-------------------------------')
     print(f"{os.path.basename(__file__)}")
     print()
