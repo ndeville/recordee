@@ -1,0 +1,153 @@
+From 9a092badf837696b3923197b6c0d9b10b1cfcb90 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Wed, 8 Feb 2023 16:44:15 +1100
+Subject: [PATCH 5/5] Revert "[libc++] Remove workaround for C11 features on
+ compilers that don't support using_if_exists"
+
+This reverts commit 21f73d5826fb5024a27eaacafadfa316f58949c5.
+---
+ libcxx/include/__config | 66 +++++++++++++++++++++++++++++++++++++++++
+ libcxx/include/cstdlib  |  4 +--
+ libcxx/include/ctime    | 18 +++++++++--
+ 3 files changed, 84 insertions(+), 4 deletions(-)
+
+diff --git a/libcxx/include/__config b/libcxx/include/__config
+index 810189c94a..d93059de6e 100644
+--- a/libcxx/include/__config
++++ b/libcxx/include/__config
+@@ -410,6 +410,72 @@ If there are users of this configuration we are happy to provide support.
+ #    define _LIBCPP_NO_CFI
+ #  endif
+ 
++// If the compiler supports using_if_exists, pretend we have those functions and they'll
++// be picked up if the C library provides them.
++//
++// TODO: Once we drop support for Clang 12, we can assume the compiler supports using_if_exists
++//       for platforms that don't have a conforming C11 library, so we can drop this whole thing.
++#  if __has_attribute(using_if_exists)
++#    define _LIBCPP_HAS_TIMESPEC_GET
++#    define _LIBCPP_HAS_QUICK_EXIT
++#    define _LIBCPP_HAS_ALIGNED_ALLOC
++#  else
++#  if (defined(__ISO_C_VISIBLE) && (__ISO_C_VISIBLE >= 2011)) || __cplusplus >= 201103L
++#    if defined(__FreeBSD__)
++#      define _LIBCPP_HAS_ALIGNED_ALLOC
++#      define _LIBCPP_HAS_QUICK_EXIT
++#      if __FreeBSD_version >= 1300064 || \
++         (__FreeBSD_version >= 1201504 && __FreeBSD_version < 1300000)
++#        define _LIBCPP_HAS_TIMESPEC_GET
++#      endif
++#    elif defined(__BIONIC__)
++#      if __ANDROID_API__ >= 21
++#        define _LIBCPP_HAS_QUICK_EXIT
++#      endif
++#      if __ANDROID_API__ >= 28
++#        define _LIBCPP_HAS_ALIGNED_ALLOC
++#      endif
++#      if __ANDROID_API__ >= 29
++#        define _LIBCPP_HAS_TIMESPEC_GET
++#      endif
++#    elif defined(__Fuchsia__) || defined(__wasi__) || defined(__NetBSD__)
++#      define _LIBCPP_HAS_ALIGNED_ALLOC
++#      define _LIBCPP_HAS_QUICK_EXIT
++#      define _LIBCPP_HAS_TIMESPEC_GET
++#    elif defined(__OpenBSD__)
++#      define _LIBCPP_HAS_ALIGNED_ALLOC
++#      define _LIBCPP_HAS_TIMESPEC_GET
++#    elif defined(__linux__)
++#      if !defined(_LIBCPP_HAS_MUSL_LIBC)
++#        if _LIBCPP_GLIBC_PREREQ(2, 15) || defined(__BIONIC__)
++#          define _LIBCPP_HAS_QUICK_EXIT
++#        endif
++#        if _LIBCPP_GLIBC_PREREQ(2, 17)
++#          define _LIBCPP_HAS_ALIGNED_ALLOC
++#          define _LIBCPP_HAS_TIMESPEC_GET
++#        endif
++#      else // defined(_LIBCPP_HAS_MUSL_LIBC)
++#        define _LIBCPP_HAS_ALIGNED_ALLOC
++#        define _LIBCPP_HAS_QUICK_EXIT
++#        define _LIBCPP_HAS_TIMESPEC_GET
++#      endif
++#    elif defined(_LIBCPP_MSVCRT)
++     // Using Microsoft's C Runtime library, not MinGW
++#      define _LIBCPP_HAS_TIMESPEC_GET
++#    elif defined(__APPLE__)
++     // timespec_get and aligned_alloc were introduced in macOS 10.15 and
++     // aligned releases
++#      if ((defined(__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__) && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ >= 101500) || \
++           (defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__) && __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ >= 130000) || \
++           (defined(__ENVIRONMENT_TV_OS_VERSION_MIN_REQUIRED__) && __ENVIRONMENT_TV_OS_VERSION_MIN_REQUIRED__ >= 130000) || \
++           (defined(__ENVIRONMENT_WATCH_OS_VERSION_MIN_REQUIRED__) && __ENVIRONMENT_WATCH_OS_VERSION_MIN_REQUIRED__ >= 60000))
++#        define _LIBCPP_HAS_ALIGNED_ALLOC
++#        define _LIBCPP_HAS_TIMESPEC_GET
++#      endif
++#    endif // __APPLE__
++#  endif
++#  endif // __has_attribute(using_if_exists)
++
+ #  ifndef _LIBCPP_CXX03_LANG
+ 
+ #    define _LIBCPP_ALIGNOF(_Tp) alignof(_Tp)
+diff --git a/libcxx/include/cstdlib b/libcxx/include/cstdlib
+index 457c31f625..27ca7aa010 100644
+--- a/libcxx/include/cstdlib
++++ b/libcxx/include/cstdlib
+@@ -131,11 +131,11 @@ using ::mbtowc _LIBCPP_USING_IF_EXISTS;
+ using ::wctomb _LIBCPP_USING_IF_EXISTS;
+ using ::mbstowcs _LIBCPP_USING_IF_EXISTS;
+ using ::wcstombs _LIBCPP_USING_IF_EXISTS;
+-#if !defined(_LIBCPP_CXX03_LANG)
++#if !defined(_LIBCPP_CXX03_LANG) && defined(_LIBCPP_HAS_QUICK_EXIT)
+ using ::at_quick_exit _LIBCPP_USING_IF_EXISTS;
+ using ::quick_exit _LIBCPP_USING_IF_EXISTS;
+ #endif
+-#if _LIBCPP_STD_VER > 14
++#if _LIBCPP_STD_VER > 14 && defined(_LIBCPP_HAS_ALIGNED_ALLOC)
+ using ::aligned_alloc _LIBCPP_USING_IF_EXISTS;
+ #endif
+ 
+diff --git a/libcxx/include/ctime b/libcxx/include/ctime
+index 0c6e4dfd6f..120af5ed83 100644
+--- a/libcxx/include/ctime
++++ b/libcxx/include/ctime
+@@ -53,13 +53,27 @@ int timespec_get( struct timespec *ts, int base); // C++17
+ #  pragma GCC system_header
+ #endif
+ 
++// FIXME:
++// Apple SDKs don't define ::timespec_get unconditionally in C++ mode. This
++// should be fixed in future SDKs, but for the time being we need to avoid
++// trying to use that declaration when the SDK doesn't provide it. Note that
++// we're detecting this here instead of in <__config> because we can't include
++// system headers from <__config>, since it leads to circular module dependencies.
++// This is also meant to be a very temporary workaround until the SDKs are fixed.
++#if defined(__APPLE__) && !__has_attribute(using_if_exists)
++#   include <sys/cdefs.h>
++#   if defined(_LIBCPP_HAS_TIMESPEC_GET) && (__DARWIN_C_LEVEL < __DARWIN_C_FULL)
++#       define _LIBCPP_HAS_TIMESPEC_GET_NOT_ACTUALLY_PROVIDED
++#   endif
++#endif
++
+ _LIBCPP_BEGIN_NAMESPACE_STD
+ 
+ using ::clock_t _LIBCPP_USING_IF_EXISTS;
+ using ::size_t _LIBCPP_USING_IF_EXISTS;
+ using ::time_t _LIBCPP_USING_IF_EXISTS;
+ using ::tm _LIBCPP_USING_IF_EXISTS;
+-#if _LIBCPP_STD_VER > 14
++#if _LIBCPP_STD_VER > 14 && defined(_LIBCPP_HAS_TIMESPEC_GET)
+ using ::timespec _LIBCPP_USING_IF_EXISTS;
+ #endif
+ using ::clock _LIBCPP_USING_IF_EXISTS;
+@@ -71,7 +85,7 @@ using ::ctime _LIBCPP_USING_IF_EXISTS;
+ using ::gmtime _LIBCPP_USING_IF_EXISTS;
+ using ::localtime _LIBCPP_USING_IF_EXISTS;
+ using ::strftime _LIBCPP_USING_IF_EXISTS;
+-#if _LIBCPP_STD_VER > 14
++#if _LIBCPP_STD_VER > 14 && defined(_LIBCPP_HAS_TIMESPEC_GET) && !defined(_LIBCPP_HAS_TIMESPEC_GET_NOT_ACTUALLY_PROVIDED)
+ using ::timespec_get _LIBCPP_USING_IF_EXISTS;
+ #endif
+ 
+-- 
+2.38.1.windows.1
+

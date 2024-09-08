@@ -1,0 +1,22 @@
+{
+    "arch": "arm64",
+    "build": "h1059232_2",
+    "build_number": 2,
+    "channel": "conda-forge",
+    "depends": [
+        "libcxx >=16",
+        "libzlib >=1.2.13,<1.3.0a0"
+    ],
+    "fn": "libsolv-0.7.28-h1059232_2.conda",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "00e4d252cbbeb894f15d01a1545aa876",
+    "name": "libsolv",
+    "platform": "osx",
+    "sha256": "fd83e17e0f71cba0eeecffd6dd7bb0b0b39ac5c5b456b425c1d92f860151ff68",
+    "size": 386817,
+    "subdir": "osx-arm64",
+    "timestamp": 1711553518981,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libsolv-0.7.28-h1059232_2.conda",
+    "version": "0.7.28"
+}

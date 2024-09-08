@@ -1,0 +1,30 @@
+{
+    "arch": "arm64",
+    "build": "h90c426b_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "fmt >=10.2.1,<11.0a0",
+        "libarchive >=3.7.2,<3.8.0a0",
+        "libcurl >=8.6.0,<9.0a0",
+        "libcxx >=16",
+        "libsolv >=0.7.23",
+        "openssl >=3.2.1,<4.0a0",
+        "reproc >=14.2,<15.0a0",
+        "reproc-cpp >=14.2,<15.0a0",
+        "yaml-cpp >=0.8.0,<0.9.0a0",
+        "zstd >=1.5.5,<1.6.0a0"
+    ],
+    "fn": "libmamba-1.5.8-h90c426b_0.conda",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "e02e82b493ab683be580380193db1b64",
+    "name": "libmamba",
+    "platform": "osx",
+    "sha256": "a6182bd735fe6a8bdd511096931a991b7d431cbfa2358f3aebb98132f063c89d",
+    "size": 1201341,
+    "subdir": "osx-arm64",
+    "timestamp": 1711395432570,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libmamba-1.5.8-h90c426b_0.conda",
+    "version": "1.5.8"
+}

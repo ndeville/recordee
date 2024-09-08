@@ -1,0 +1,59 @@
+{
+  "paths": [
+    {
+      "_path": "include/iconv.h",
+      "path_type": "hardlink",
+      "sha256": "e91292216b94f7c6f249414260e827f11c051ed148a57ee3d6dac77bc5116c18",
+      "size_in_bytes": 9248
+    },
+    {
+      "_path": "include/libcharset.h",
+      "path_type": "hardlink",
+      "sha256": "180d05ba6adb348e150c6973ab795fe422da0b05e09f8ba7c369746ed1901702",
+      "size_in_bytes": 1510
+    },
+    {
+      "_path": "include/localcharset.h",
+      "path_type": "hardlink",
+      "sha256": "67f01a81a41eab468313b34fb153aa11fe273b829c529e3a820a3877438d20e4",
+      "size_in_bytes": 6338
+    },
+    {
+      "_path": "lib/libcharset.1.dylib",
+      "path_type": "hardlink",
+      "sha256": "12d006e9a18a9632ff7cdd62f4fba80b463f7f58184f0f0ec7d11d471711f47e",
+      "size_in_bytes": 51360
+    },
+    {
+      "_path": "lib/libcharset.a",
+      "path_type": "hardlink",
+      "sha256": "1a8acf598b5aafdc8593fd797fd02d4501c75057d166ad935673805c8abd414f",
+      "size_in_bytes": 2848
+    },
+    {
+      "_path": "lib/libcharset.dylib",
+      "path_type": "softlink",
+      "sha256": "12d006e9a18a9632ff7cdd62f4fba80b463f7f58184f0f0ec7d11d471711f47e",
+      "size_in_bytes": 51360
+    },
+    {
+      "_path": "lib/libiconv.2.dylib",
+      "path_type": "hardlink",
+      "sha256": "1a079d79476e9e38afb3cb62c2dec036739f64071838af2500894321f9d2432f",
+      "size_in_bytes": 1011536
+    },
+    {
+      "_path": "lib/libiconv.a",
+      "path_type": "hardlink",
+      "sha256": "8b9a72a93e5b05fe8bd938ba4d06127c027f13b6e360fd0c63cdcd9d33c6fc01",
+      "size_in_bytes": 997456
+    },
+    {
+      "_path": "lib/libiconv.dylib",
+      "path_type": "softlink",
+      "sha256": "1a079d79476e9e38afb3cb62c2dec036739f64071838af2500894321f9d2432f",
+      "size_in_bytes": 1011536
+    }
+  ],
+  "paths_version": 1
+}

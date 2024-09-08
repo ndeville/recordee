@@ -1,0 +1,23 @@
+{
+    "arch": null,
+    "build": "pyha2e5f31_6",
+    "build_number": 6,
+    "channel": "conda-forge",
+    "depends": [
+        "__unix",
+        "python >=3.8"
+    ],
+    "fn": "pysocks-1.7.1-pyha2e5f31_6.tar.bz2",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "2a7de29fb590ca14b5243c4c812c8025",
+    "name": "pysocks",
+    "noarch": "python",
+    "platform": null,
+    "sha256": "a42f826e958a8d22e65b3394f437af7332610e43ee313393d1cf143f0a2d274b",
+    "size": 18981,
+    "subdir": "noarch",
+    "timestamp": 1661604969727,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha2e5f31_6.tar.bz2",
+    "version": "1.7.1"
+}

@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "build": "h078ce10_0",
+  "build_number": 0,
+  "depends": [],
+  "license": "X11 AND BSD-3-Clause",
+  "name": "ncurses",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1710866874348,
+  "version": "6.4.20240210"
+}

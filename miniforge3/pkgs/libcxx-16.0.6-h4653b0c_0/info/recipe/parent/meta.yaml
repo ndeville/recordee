@@ -1,0 +1,122 @@
+{% set version = "16.0.6" %}
+
+package:
+  name: libcxx_and_libcxxabi
+  version: {{ version }}
+
+source:
+  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version.replace(".rc", "-rc") }}/llvm-project-{{ version.replace(".rc", "rc") }}.src.tar.xz
+    sha256: ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e
+    patches:
+      - patches/0001-libcxxabi-10.9-compatibility.patch  # [osx and x86_64]
+      - patches/0002-Support-legacy-standalone-builds.patch
+      # See https://lists.llvm.org/pipermail/libcxx-dev/2021-July/001172.html
+      - patches/0003-Fix-ABI-compatibility-with-system.patch
+      - patches/0004-custom-error-message-for-old-sdk.patch
+      # upstream removed fallbacks in case the underlying libc didn't support C11 in
+      # https://github.com/llvm/llvm-project/commit/21f73d5826fb5024a27eaacafadfa316f58949c5;
+      # however, it seems that the then-required using_if_exists does not work as desired yet
+      - patches/0005-Revert-libc-Remove-workaround-for-C11-features-on-co.patch
+
+build:
+  number: 0
+  skip: true  # [win]
+  skip: true  # [ppc64le or aarch64]
+  ignore_run_exports:
+    - libstdcxx-ng
+  missing_dso_whitelist:
+    - /usr/lib/libc++abi.dylib
+
+requirements:
+  build:
+    - cmake
+    - ninja
+    - {{ compiler('cxx') }}
+    - python >3               # [not osx]
+  host:
+    - clangdev {{ version }}  # [not osx]
+    - llvmdev {{ version }}   # [not osx]
+
+outputs:
+  - name: libcxx
+    files:
+      - include/c++
+      - Library/include/c++
+      - lib/libc++.*
+      - lib/libc++fs.*
+      - lib/libc++experimental.*
+      - Library/bin/c++*.dll
+      - Library/lib/c++*.lib
+      - Library/lib/libc++*.lib
+    requirements:
+      build:
+        - {{ compiler('cxx') }}
+      host:
+      run:
+        - {{ pin_subpackage("libcxxabi", exact=True) }}    # [linux]
+    test:
+      requires:
+        - clang                  # [osx]
+        - clangxx
+        - ld64                   # [osx]
+        - cctools                # [osx]
+        - llvm-tools             # [osx]
+        - {{ compiler('cxx') }}  # [not osx]
+      files:
+        - test_sources
+        - compile_test.sh   # [unix]
+        - compile_test.bat  # [win]
+      commands:
+        # Dummy var for different hashes
+        - echo {{ dummy_var }}                                    # [osx]
+        - if not exist %LIBRARY_INC%\\c++\\v1\\iterator exit 1    # [win]
+        - test -f $PREFIX/include/c++/v1/iterator                 # [unix]
+        - bash compile_test.sh                                    # [unix]
+        - compile_test.bat                                        # [win]
+        # make sure we inserted link to our docs wherever it is necessary;
+        # i.e. everywhere there's a string "availability(macos,...,introduced=<ver>)" for osx version >10.9;
+        # 'grep -v' inverts the match but returns non-zero exit code if no lines are returned; so we use 'wc -l';
+        # we want to have zero lines that don't either: contain the link or are for 10.9
+        - if [ 0 -eq $(cat ${PREFIX}/include/c++/v1/__availability | grep "availability(macos" | grep -vE "(conda-forge|10.9)" | wc -l) ]; then exit 0; else exit 1; fi  # [osx]
+        # !!!!!!!!!!!! README !!!!!!!!!!!!!!!!!!
+        # we do not ship libcxxabi on OSX - this breaks exception passing
+        - if [ -f $PREFIX/lib/libc++abi.dylib ]; then exit 1; fi  # [osx]
+        - test -f $PREFIX/lib/libc++abi.so                        # [linux]
+
+      # Following 2 projects had issues with libc++, so check them
+      # before releasing just to be sure.
+      downstreams:   # [osx]
+        - python-symengine  # [osx]
+        - openturns         # [osx]
+        - libcxx-testing    # [osx]
+
+  - name: libcxxabi
+    build:
+      skip: true  # [not linux]
+    files:
+      - lib/libc++abi.*
+    requirements:
+      run_constrained:
+        - libcxx {{ version }}.*
+    test:
+      commands:
+        - test -f $PREFIX/lib/libc++abi.so  # [linux]
+
+about:
+  home: http://libcxx.llvm.org/
+  license: Apache-2.0 WITH LLVM-exception
+  license_file: libcxx/LICENSE.TXT
+  license_family: Apache
+  summary: LLVM C++ standard library
+  dev_url: https://github.com/llvm/llvm-project
+
+extra:
+  recipe-maintainers:
+    - SylvainCorlay
+    - inducer
+    - jakirkham
+    - isuruf
+    - beckermr
+    - timsnyder
+    - h-vetinari
+  feedstock-name: libcxx

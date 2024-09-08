@@ -1,0 +1,22 @@
+{
+    "arch": null,
+    "build": "pyhd8ed1ab_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "colorama",
+        "python >=3.7"
+    ],
+    "fn": "tqdm-4.66.2-pyhd8ed1ab_0.conda",
+    "license": "MPL-2.0 or MIT",
+    "md5": "2b8dfb969f984497f3f98409a9545776",
+    "name": "tqdm",
+    "noarch": "python",
+    "platform": null,
+    "sha256": "416d1d9318f3267325ad7e2b8a575df20ff9031197b30c0222c3d3b023877260",
+    "size": 89567,
+    "subdir": "noarch",
+    "timestamp": 1707598746354,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/tqdm-4.66.2-pyhd8ed1ab_0.conda",
+    "version": "4.66.2"
+}

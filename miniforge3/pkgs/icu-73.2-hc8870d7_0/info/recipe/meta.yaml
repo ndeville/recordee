@@ -1,0 +1,68 @@
+# This file created by conda-build 3.25.0
+# meta.yaml template originally from:
+# /Users/runner/work/1/s/recipe, last modified Thu Aug 24 18:03:35 2023
+# ------------------------------------------------
+
+package:
+  name: icu
+  version: '73.2'
+source:
+  - patches:
+      - mach-port-t.patch
+    sha256: 818a80712ed3caacd9b652305e01afc7fa167e6f2e94996da44b90c2ab604ce1
+    url: https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-src.tgz
+  - folder: source/data
+    sha256: ca1ee076163b438461e484421a7679fc33a64cd0a54f9d4b401893fa1eb42701
+    url: https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-data.zip
+build:
+  number: '0'
+  run_exports:
+    - icu >=73.2,<74.0a0
+  string: hc8870d7_0
+requirements:
+  build:
+    - clang_bootstrap_osx-arm64 15.0.7 h84ec8a4_3
+    - libtool 2.4.7 hf0c8a7f_0
+    - make 4.3 h22f3db7_1
+  host: []
+  run: []
+test:
+  commands:
+    - test ! -f $PREFIX/lib/libicudata.a
+    - test -f $PREFIX/lib/libicudata.73.2.dylib
+    - test ! -f $PREFIX/lib/libicui18n.a
+    - test -f $PREFIX/lib/libicui18n.73.2.dylib
+    - test ! -f $PREFIX/lib/libicuio.a
+    - test -f $PREFIX/lib/libicuio.73.2.dylib
+    - test ! -f $PREFIX/lib/libicutest.a
+    - test -f $PREFIX/lib/libicutest.73.2.dylib
+    - test ! -f $PREFIX/lib/libicutu.a
+    - test -f $PREFIX/lib/libicutu.73.2.dylib
+    - test ! -f $PREFIX/lib/libicuuc.a
+    - test -f $PREFIX/lib/libicuuc.73.2.dylib
+    - genbrk --help
+    - gencfu --help
+    - gencnval --help
+    - gendict --help
+    - icuinfo --help
+    - icu-config --help
+    - makeconv gb-18030-2000.ucm
+  files:
+    - de.txt
+    - gb-18030-2000.ucm
+about:
+  dev_url: https://github.com/unicode-org/icu
+  doc_url: https://unicode-org.github.io/icu-docs/apidoc/released/icu4c/
+  home: https://icu.unicode.org
+  license: MIT
+  license_file: LICENSE
+  summary: International Components for Unicode.
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - ccordoba12
+    - jakirkham
+    - msarahan
+    - ocefpaf
+    - xhochy

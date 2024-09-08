@@ -1,0 +1,69 @@
+# This file created by conda-build 3.27.0
+# meta.yaml template originally from:
+# /home/conda/recipe_root, last modified Sun Nov 26 19:28:04 2023
+# ------------------------------------------------
+
+package:
+  name: idna
+  version: '3.6'
+source:
+  sha256: 9ecdbbd083b06798ae1e86adcbfe8ab1479cf864e4ee30fe4e46a003d12491ca
+  url: https://pypi.io/packages/source/i/idna/idna-3.6.tar.gz
+build:
+  noarch: python
+  number: '0'
+  script: /home/conda/feedstock_root/build_artifacts/idna_1701026962277/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh/bin/python
+    -m pip install . -vvv
+  string: pyhd8ed1ab_0
+requirements:
+  host:
+    - _libgcc_mutex 0.1 conda_forge
+    - _openmp_mutex 4.5 2_gnu
+    - bzip2 1.0.8 hd590300_5
+    - ca-certificates 2023.11.17 hbcca054_0
+    - flit-core 3.9.0 pyhd8ed1ab_0
+    - ld_impl_linux-64 2.40 h41732ed_0
+    - libexpat 2.5.0 hcb278e6_1
+    - libffi 3.4.2 h7f98852_5
+    - libgcc-ng 13.2.0 h807b86a_3
+    - libgomp 13.2.0 h807b86a_3
+    - libnsl 2.0.1 hd590300_0
+    - libsqlite 3.44.2 h2797004_0
+    - libuuid 2.38.1 h0b41bf4_0
+    - libzlib 1.2.13 hd590300_5
+    - ncurses 6.4 h59595ed_2
+    - openssl 3.2.0 hd590300_0
+    - pip 23.3.1 pyhd8ed1ab_0
+    - python 3.12.0 hab00c5b_0_cpython
+    - readline 8.2 h8228510_1
+    - setuptools 68.2.2 pyhd8ed1ab_0
+    - tk 8.6.13 noxft_h4845f30_101
+    - tzdata 2023c h71feb2d_0
+    - wheel 0.42.0 pyhd8ed1ab_0
+    - xz 5.2.6 h166bdaf_0
+  run:
+    - python >=3.6
+test:
+  imports:
+    - idna
+about:
+  description: 'A library to support the Internationalised Domain Names in Applications
+
+    (IDNA) protocol as specified in RFC 5891. This version of the protocol
+
+    is often referred to as "IDNA2008".
+
+    '
+  home: https://github.com/kjd/idna
+  license: BSD-3-Clause
+  license_file: LICENSE.md
+  summary: Internationalized Domain Names in Applications (IDNA).
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: azure_20231126.1.1
+  recipe-maintainers:
+    - goanpeca
+    - jschueller
+  remote_url: https://github.com/conda-forge/idna-feedstock
+  sha: 93d316c9cd4e7d60e6844b5e74cab7c2ab68b269

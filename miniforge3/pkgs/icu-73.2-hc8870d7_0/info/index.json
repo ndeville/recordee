@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "build": "hc8870d7_0",
+  "build_number": 0,
+  "depends": [],
+  "license": "MIT",
+  "name": "icu",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1692902104771,
+  "version": "73.2"
+}

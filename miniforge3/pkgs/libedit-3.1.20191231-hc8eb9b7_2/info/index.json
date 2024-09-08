@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "hc8eb9b7_2",
+  "build_number": 2,
+  "depends": [
+    "ncurses >=6.2,<6.3.0a0"
+  ],
+  "license": "BSD-2-Clause",
+  "license_family": "BSD",
+  "name": "libedit",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1597616630749,
+  "version": "3.1.20191231"
+}

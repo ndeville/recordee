@@ -1,0 +1,73 @@
+# This file created by conda-build 24.1.2
+# meta.yaml template originally from:
+# /Users/runner/work/1/s/recipe, last modified Sun Mar 24 22:03:16 2024
+# ------------------------------------------------
+
+package:
+  name: libxml2
+  version: 2.12.6
+source:
+  patches:
+    - 0002-Make-and-install-a-pkg-config-file-on-Windows.patch
+  sha256: 42c397f60f4647ddf2e0c132f384cb06a49f5f91cbf6d79af9fa8ce43142cb38
+  url: https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.12.6/libxml2-v2.12.6.tar.gz
+build:
+  number: '1'
+  run_exports:
+    - libxml2 >=2.12.6,<3.0a0
+  string: h0d0cfa8_1
+requirements:
+  build:
+    - autoconf 2.71 pl5321hed12c24_1
+    - automake 1.16.5 pl5321h694c41f_0
+    - clang_bootstrap_osx-arm64 16.0.6 h223edda_11
+    - libiconv 1.17 hd75f5a5_2
+    - libtool 2.4.7 hf0c8a7f_0
+    - m4 1.4.18 haf1e3a3_1001
+    - make 4.3 h22f3db7_1
+    - perl 5.32.1 7_h10d778d_perl5
+    - pkg-config 0.29.2 ha3d46e9_1008
+  host:
+    - icu 73.2 hc8870d7_0
+    - libiconv 1.17 h0d3ecfb_2
+    - libzlib 1.2.13 h53f4e23_5
+    - xz 5.2.6 h57fd34a_0
+    - zlib 1.2.13 h53f4e23_5
+  run:
+    - icu >=73.2,<74.0a0
+    - libiconv >=1.17,<2.0a0
+    - libzlib >=1.2.13,<1.3.0a0
+    - xz >=5.2.6,<6.0a0
+test:
+  commands:
+    - xmllint test.xml
+  files:
+    - test.xml
+about:
+  description: 'Though libxml2 is written in C a variety of language
+
+    bindings make it available in other environments.
+
+    '
+  dev_url: https://git.gnome.org/browse/libxml2/
+  doc_source_url: https://github.com/GNOME/libxml2/blob/master/doc/index.html
+  doc_url: http://xmlsoft.org/html/index.html
+  home: http://xmlsoft.org/
+  license: MIT
+  license_family: MIT
+  license_file: Copyright
+  summary: The XML C parser and toolkit of Gnome
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: azure_20240324.3.1
+  recipe-maintainers:
+    - gillins
+    - isuruf
+    - jakirkham
+    - jschueller
+    - msarahan
+    - ocefpaf
+    - scopatz
+  remote_url: https://github.com/conda-forge/libxml2-feedstock
+  sha: 055c3b937ffff20cb4776d3e3b53fd8aeda66095

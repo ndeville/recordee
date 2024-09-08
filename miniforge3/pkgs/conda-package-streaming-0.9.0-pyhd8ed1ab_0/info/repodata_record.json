@@ -1,0 +1,23 @@
+{
+    "arch": null,
+    "build": "pyhd8ed1ab_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "python >=3.7",
+        "zstandard >=0.15"
+    ],
+    "fn": "conda-package-streaming-0.9.0-pyhd8ed1ab_0.conda",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "38253361efb303deead3eab39ae9269b",
+    "name": "conda-package-streaming",
+    "noarch": "python",
+    "platform": null,
+    "sha256": "654a2488f77bf43555787d952dbffdc5d97956ff4aa9e0414a7131bb741dcf4c",
+    "size": 19183,
+    "subdir": "noarch",
+    "timestamp": 1691009348105,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/conda-package-streaming-0.9.0-pyhd8ed1ab_0.conda",
+    "version": "0.9.0"
+}

@@ -1,0 +1,17 @@
+{
+  "arch": null,
+  "build": "pyha2e5f31_6",
+  "build_number": 6,
+  "depends": [
+    "__unix",
+    "python >=3.8"
+  ],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "name": "pysocks",
+  "noarch": "python",
+  "platform": null,
+  "subdir": "noarch",
+  "timestamp": 1661604969727,
+  "version": "1.7.1"
+}

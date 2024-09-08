@@ -1,0 +1,9 @@
+include/iconv.h
+include/libcharset.h
+include/localcharset.h
+lib/libcharset.1.dylib
+lib/libcharset.a
+lib/libcharset.dylib
+lib/libiconv.2.dylib
+lib/libiconv.a
+lib/libiconv.dylib

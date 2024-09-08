@@ -1,0 +1,23 @@
+{
+    "arch": "arm64",
+    "build": "py310hbe9552e_3",
+    "build_number": 3,
+    "channel": "conda-forge",
+    "depends": [
+        "python >=3.10,<3.11.0a0",
+        "python >=3.10,<3.11.0a0 *_cpython",
+        "python_abi 3.10.* *_cp310"
+    ],
+    "fn": "jsonpointer-2.4-py310hbe9552e_3.conda",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "7e521c322debe4fb1ac5fea63307a724",
+    "name": "jsonpointer",
+    "platform": "osx",
+    "sha256": "ac07094026e47cd74ae431343d17fb2cff34a41de88ad8532308086d73d01d1a",
+    "size": 16651,
+    "subdir": "osx-arm64",
+    "timestamp": 1695397700350,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/jsonpointer-2.4-py310hbe9552e_3.conda",
+    "version": "2.4"
+}

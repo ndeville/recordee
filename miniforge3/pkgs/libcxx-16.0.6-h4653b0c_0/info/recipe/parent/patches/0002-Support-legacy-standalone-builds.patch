@@ -1,0 +1,40 @@
+From d29448d3a9f777674c2aea03ebbdba6bb245e97e Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Tue, 18 May 2021 19:51:28 -0500
+Subject: [PATCH 2/5] Support legacy standalone builds
+
+---
+ libcxx/src/CMakeLists.txt | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/libcxx/src/CMakeLists.txt b/libcxx/src/CMakeLists.txt
+index 9abf548abb..3f155af09e 100644
+--- a/libcxx/src/CMakeLists.txt
++++ b/libcxx/src/CMakeLists.txt
+@@ -236,6 +236,23 @@ if (LIBCXX_ENABLE_SHARED)
+       "-Wl,-force_symbols_weak_list,${CMAKE_CURRENT_SOURCE_DIR}/../lib/weak.exp")
+ 
+     target_link_libraries(cxx_shared PRIVATE $<TARGET_NAME_IF_EXISTS:cxxabi-reexports>)
++    function(reexport_symbols file)
++      target_link_libraries(cxx_shared PRIVATE "-Wl,-reexported_symbols_list,${file}")
++    endfunction()
++
++    if (LIBCXXABI_ENABLE_NEW_DELETE_DEFINITIONS)
++      reexport_symbols("${CMAKE_CURRENT_SOURCE_DIR}/../../libcxxabi/lib/new-delete.exp")
++    endif()
++
++    if (LIBCXX_ENABLE_EXCEPTIONS)
++      reexport_symbols("${CMAKE_CURRENT_SOURCE_DIR}/../../libcxxabi/lib/exceptions.exp")
++
++      if ("${CMAKE_OSX_ARCHITECTURES}" MATCHES "^(armv6|armv7|armv7s)$")
++        reexport_symbols("${CMAKE_CURRENT_SOURCE_DIR}/../../libcxxabi/lib/personality-sjlj.exp")
++      else()
++        reexport_symbols("${CMAKE_CURRENT_SOURCE_DIR}/../../libcxxabi/lib/personality-v0.exp")
++      endif()
++    endif()
+   endif()
+ 
+   # Generate a linker script in place of a libc++.so symlink.
+-- 
+2.38.1.windows.1
+

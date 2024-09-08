@@ -1,0 +1,20 @@
+{
+  "arch": "arm64",
+  "build": "py310h1253130_1",
+  "build_number": 1,
+  "constrains": [
+    "libbrotlicommon 1.1.0 hb547adb_1"
+  ],
+  "depends": [
+    "libcxx >=15.0.7",
+    "python >=3.10,<3.11.0a0",
+    "python >=3.10,<3.11.0a0 *_cpython",
+    "python_abi 3.10.* *_cp310"
+  ],
+  "license": "MIT",
+  "name": "brotli-python",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1695990848681,
+  "version": "1.1.0"
+}

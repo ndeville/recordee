@@ -1,0 +1,9 @@
+{
+  "cxx_compiler": "clang_bootstrap",
+  "cxx_compiler_version": "15",
+  "channel_targets": "conda-forge main",
+  "openturns": "1.20",
+  "target_platform": "osx-arm64",
+  "dummy_var": "1",
+  "CONDA_BUILD_SYSROOT": "/Applications/Xcode_13.2.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk"
+}

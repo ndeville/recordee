@@ -1,0 +1,13 @@
+lib/python3.10/site-packages/zstandard-0.22.0-py3.10.egg-info/PKG-INFO
+lib/python3.10/site-packages/zstandard-0.22.0-py3.10.egg-info/SOURCES.txt
+lib/python3.10/site-packages/zstandard-0.22.0-py3.10.egg-info/dependency_links.txt
+lib/python3.10/site-packages/zstandard-0.22.0-py3.10.egg-info/requires.txt
+lib/python3.10/site-packages/zstandard-0.22.0-py3.10.egg-info/top_level.txt
+lib/python3.10/site-packages/zstandard/__init__.py
+lib/python3.10/site-packages/zstandard/__init__.pyi
+lib/python3.10/site-packages/zstandard/__pycache__/__init__.cpython-310.pyc
+lib/python3.10/site-packages/zstandard/__pycache__/backend_cffi.cpython-310.pyc
+lib/python3.10/site-packages/zstandard/_cffi.cpython-310-darwin.so
+lib/python3.10/site-packages/zstandard/backend_c.cpython-310-darwin.so
+lib/python3.10/site-packages/zstandard/backend_cffi.py
+lib/python3.10/site-packages/zstandard/py.typed

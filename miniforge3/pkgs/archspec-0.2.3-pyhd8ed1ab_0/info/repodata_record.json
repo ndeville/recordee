@@ -1,0 +1,21 @@
+{
+    "arch": null,
+    "build": "pyhd8ed1ab_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "python >=3.6"
+    ],
+    "fn": "archspec-0.2.3-pyhd8ed1ab_0.conda",
+    "license": "MIT OR Apache-2.0",
+    "md5": "192278292e20704f663b9c766909d67b",
+    "name": "archspec",
+    "noarch": "python",
+    "platform": null,
+    "sha256": "cef4062ea91f07a961a808801d6b34a163632150037f4bd28232310ff0301cd7",
+    "size": 48780,
+    "subdir": "noarch",
+    "timestamp": 1708969700251,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/archspec-0.2.3-pyhd8ed1ab_0.conda",
+    "version": "0.2.3"
+}

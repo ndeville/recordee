@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "build": "h0d3ecfb_2",
+  "build_number": 2,
+  "depends": [],
+  "license": "LGPL-2.1-only",
+  "name": "libiconv",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1702682458114,
+  "version": "1.17"
+}

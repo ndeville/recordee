@@ -1,0 +1,16 @@
+{
+  "arch": "arm64",
+  "build": "py310h2aa6e3c_0",
+  "build_number": 0,
+  "depends": [
+    "python >=3.10,<3.11.0a0",
+    "python >=3.10,<3.11.0a0 *_cpython",
+    "python_abi 3.10.* *_cp310"
+  ],
+  "license": "MIT",
+  "name": "pycosat",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1696356406059,
+  "version": "0.6.6"
+}

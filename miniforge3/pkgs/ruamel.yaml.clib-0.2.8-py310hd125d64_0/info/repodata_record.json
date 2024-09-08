@@ -1,0 +1,23 @@
+{
+    "arch": "arm64",
+    "build": "py310hd125d64_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "python >=3.10,<3.11.0a0",
+        "python >=3.10,<3.11.0a0 *_cpython",
+        "python_abi 3.10.* *_cp310"
+    ],
+    "fn": "ruamel.yaml.clib-0.2.8-py310hd125d64_0.conda",
+    "license": "MIT",
+    "license_family": "MIT",
+    "md5": "e0b9a24f19622386be17bf9f29674e81",
+    "name": "ruamel.yaml.clib",
+    "platform": "osx",
+    "sha256": "83b27f5dafd201a9408886ff18af6ccdde45e748c934fce588a4b531cdd249d5",
+    "size": 111512,
+    "subdir": "osx-arm64",
+    "timestamp": 1707315215965,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/ruamel.yaml.clib-0.2.8-py310hd125d64_0.conda",
+    "version": "0.2.8"
+}

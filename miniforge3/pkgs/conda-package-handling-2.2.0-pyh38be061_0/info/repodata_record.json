@@ -1,0 +1,24 @@
+{
+    "arch": null,
+    "build": "pyh38be061_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "conda-package-streaming >=0.9.0",
+        "python >=3.7",
+        "zstandard >=0.15"
+    ],
+    "fn": "conda-package-handling-2.2.0-pyh38be061_0.conda",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "8a3ae7f6318376aa08ea753367bb7dd6",
+    "name": "conda-package-handling",
+    "noarch": "python",
+    "platform": null,
+    "sha256": "9a221808405d813d8c555efce6944379b907d36d79e77d526d573efa6b996d26",
+    "size": 255143,
+    "subdir": "noarch",
+    "timestamp": 1691048232276,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/conda-package-handling-2.2.0-pyh38be061_0.conda",
+    "version": "2.2.0"
+}

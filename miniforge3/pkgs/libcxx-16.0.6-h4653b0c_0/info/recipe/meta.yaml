@@ -1,0 +1,67 @@
+# This file created by conda-build 3.24.0
+# ------------------------------------------------
+
+package:
+  name: libcxx
+  version: 16.0.6
+source:
+  - patches:
+      - patches/0002-Support-legacy-standalone-builds.patch
+      - patches/0003-Fix-ABI-compatibility-with-system.patch
+      - patches/0004-custom-error-message-for-old-sdk.patch
+      - patches/0005-Revert-libc-Remove-workaround-for-C11-features-on-co.patch
+    sha256: ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e
+    url: https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/llvm-project-16.0.6.src.tar.xz
+build:
+  ignore_run_exports:
+    - libstdcxx-ng
+  missing_dso_whitelist:
+    - /usr/lib/libc++abi.dylib
+  noarch: false
+  noarch_python: false
+  number: '0'
+  string: h4653b0c_0
+requirements:
+  build:
+    - clang_bootstrap_osx-arm64 15.0.7 h84ec8a4_3
+  run: []
+test:
+  commands:
+    - echo 1
+    - test -f $PREFIX/include/c++/v1/iterator
+    - bash compile_test.sh
+    - if [ 0 -eq $(cat ${PREFIX}/include/c++/v1/__availability | grep "availability(macos"
+      | grep -vE "(conda-forge|10.9)" | wc -l) ]; then exit 0; else exit 1; fi
+    - if [ -f $PREFIX/lib/libc++abi.dylib ]; then exit 1; fi
+  downstreams:
+    - libcxx-testing
+    - openturns
+    - python-symengine
+  files:
+    - compile_test.sh
+    - test_sources
+  requires:
+    - cctools
+    - clang
+    - clangxx
+    - ld64
+    - llvm-tools
+about:
+  dev_url: https://github.com/llvm/llvm-project
+  home: http://libcxx.llvm.org/
+  license: Apache-2.0 WITH LLVM-exception
+  license_family: Apache
+  license_file: libcxx/LICENSE.TXT
+  summary: LLVM C++ standard library
+extra:
+  copy_test_source_files: true
+  feedstock-name: libcxx
+  final: true
+  recipe-maintainers:
+    - SylvainCorlay
+    - beckermr
+    - h-vetinari
+    - inducer
+    - isuruf
+    - jakirkham
+    - timsnyder

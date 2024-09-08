@@ -1,0 +1,106 @@
+# This file created by conda-build 24.3.0
+# ------------------------------------------------
+
+package:
+  name: libsolv
+  version: 0.7.28
+source:
+  fn: libsolv-0.7.28.tar.gz
+  patches:
+    - conda_variant_priorization.patch
+    - no_error_subdir_mismatch.patch
+  sha256: bd2406f498fea6086ae0eacbf8b188c98b380e59af2267170e6a7b7d715cb207
+  url: https://github.com/openSUSE/libsolv/archive/0.7.28.tar.gz
+build:
+  number: 2
+  run_exports:
+    - libsolv >=0.7.28,<0.8.0a0
+  string: h1059232_2
+requirements:
+  build:
+    - bzip2 1.0.8 h10d778d_5
+    - c-ares 1.27.0 h10d778d_0
+    - ca-certificates 2024.2.2 h8857fd0_0
+    - cctools_osx-64 986 ha1c5b94_0
+    - cctools_osx-arm64 986 h7bb7a8e_0
+    - clang 16.0.6 hdae98eb_6
+    - clang-16 16.0.6 default_h7151d67_6
+    - clang_impl_osx-arm64 16.0.6 ha81d56d_11
+    - clang_osx-arm64 16.0.6 h40be2b1_11
+    - clangxx 16.0.6 default_h7151d67_6
+    - clangxx_impl_osx-arm64 16.0.6 h4a79b72_11
+    - clangxx_osx-arm64 16.0.6 h40be2b1_11
+    - cmake 3.29.0 h7c85d92_0
+    - compiler-rt 16.0.6 ha38d28d_2
+    - compiler-rt_osx-64 16.0.6 ha38d28d_2
+    - icu 73.2 hf5e326d_0
+    - krb5 1.21.2 hb884880_0
+    - ld64_osx-64 711 ha20a434_0
+    - ld64_osx-arm64 711 h6aa3cc8_0
+    - libclang-cpp16 16.0.6 default_h7151d67_6
+    - libcurl 8.7.1 h726d00d_0
+    - libcxx 16.0.6 hd57cbcb_0
+    - libedit 3.1.20191231 h0678c8f_2
+    - libev 4.33 h10d778d_2
+    - libexpat 2.6.2 h73e2aa4_0
+    - libiconv 1.17 hd75f5a5_2
+    - libllvm16 16.0.6 hbedff68_3
+    - libnghttp2 1.58.0 h64cf6d3_1
+    - libssh2 1.11.0 hd019ec5_0
+    - libuv 1.48.0 h67532ce_0
+    - libxml2 2.12.6 hc0ae0f7_1
+    - libzlib 1.2.13 h8a1eda9_5
+    - llvm-tools 16.0.6 hbedff68_3
+    - ncurses 6.4.20240210 h73e2aa4_0
+    - ninja 1.11.1 hb8565cd_0
+    - openssl 3.2.1 hd75f5a5_1
+    - rhash 1.4.4 h0dc2134_0
+    - sigtool 0.1.3 h88f4db0_0
+    - tapi 1100.0.11 h9ce4665_0
+    - xz 5.2.6 h775f41a_0
+    - zstd 1.5.5 h829000d_0
+  host:
+    - libcxx 16.0.6 h4653b0c_0
+    - libzlib 1.2.13 h53f4e23_5
+    - zlib 1.2.13 h53f4e23_5
+  run:
+    - libcxx >=16
+    - libzlib >=1.2.13,<1.3.0a0
+test:
+  commands:
+    - test -f "${PREFIX}/lib/libsolv${SHLIB_EXT}"
+    - test -f "${PREFIX}/lib/libsolvext${SHLIB_EXT}"
+    - test -f "${PREFIX}/include/solv/repo.h"
+    - dumpsolv -h
+    - cmake -G Ninja -S test/ -B build/ -D LIB_NAME="libsolv${SHLIB_EXT}" ${CMAKE_ARGS}
+    - cmake --build build/
+    - cmake --build build --target test
+  files:
+    - test/*
+  requires:
+    - clang_osx-arm64 16.*
+    - clangxx_osx-arm64 16.*
+    - cmake
+    - ninja
+about:
+  description: libsolv, a free package dependency solver using a satisfiability algorithm.
+  dev_url: https://github.com/openSUSE/libsolv
+  home: https://github.com/openSUSE/libsolv
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.BSD
+  summary: Library for solving packages and reading repositories
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: azure_20240327.2.1
+  recipe-maintainers:
+    - AntoinePrv
+    - JohanMabille
+    - SylvainCorlay
+    - adriendelsalle
+    - davidbrochart
+    - pavelzw
+    - wolfv
+  remote_url: https://github.com/conda-forge/libsolv-feedstock
+  sha: 76eeb8077c40f51a1511a8608e1eb31c97b58381

@@ -1,0 +1,16 @@
+{
+  "zlib": "1.2",
+  "libiconv": "1",
+  "c_compiler_version": "16",
+  "channel_targets": "conda-forge main",
+  "c_compiler": "clang",
+  "CONDA_BUILD_SYSROOT": "/Applications/Xcode_13.2.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+  "openssl": "3",
+  "libxml2": "2.12",
+  "lz4_c": "1.9.3",
+  "bzip2": "1",
+  "zstd": "1.5",
+  "target_platform": "osx-arm64",
+  "xz": "5",
+  "lzo": "2"
+}

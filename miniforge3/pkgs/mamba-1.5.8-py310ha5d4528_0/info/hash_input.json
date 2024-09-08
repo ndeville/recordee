@@ -1,0 +1,7 @@
+{
+  "channel_targets": "conda-forge main",
+  "openssl": "3",
+  "build_platform": "osx-64",
+  "target_platform": "osx-arm64",
+  "python": "3.10.* *_cpython"
+}

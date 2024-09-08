@@ -1,0 +1,19 @@
+{
+    "arch": "arm64",
+    "build": "hc8870d7_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [],
+    "fn": "icu-73.2-hc8870d7_0.conda",
+    "license": "MIT",
+    "license_family": "MIT",
+    "md5": "8521bd47c0e11c5902535bb1a17c565f",
+    "name": "icu",
+    "platform": "osx",
+    "sha256": "ff9cd0c6cd1349954c801fb443c94192b637e1b414514539f3c49c56a39f51b1",
+    "size": 11997841,
+    "subdir": "osx-arm64",
+    "timestamp": 1692902104771,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/icu-73.2-hc8870d7_0.conda",
+    "version": "73.2"
+}

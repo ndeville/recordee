@@ -1,0 +1,21 @@
+{
+  "arch": "arm64",
+  "build": "ha4dd798_1",
+  "build_number": 1,
+  "depends": [
+    "__osx >=10.9",
+    "c-ares >=1.23.0,<2.0a0",
+    "libcxx >=16.0.6",
+    "libev >=4.33,<4.34.0a0",
+    "libev >=4.33,<5.0a0",
+    "libzlib >=1.2.13,<1.3.0a0",
+    "openssl >=3.2.0,<4.0a0"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "libnghttp2",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1702130473930,
+  "version": "1.58.0"
+}

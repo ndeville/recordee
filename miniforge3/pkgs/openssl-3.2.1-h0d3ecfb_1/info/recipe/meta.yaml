@@ -1,0 +1,52 @@
+# This file created by conda-build 24.1.2
+# ------------------------------------------------
+
+package:
+  name: openssl
+  version: 3.2.1
+source:
+  sha256: 83c7329fe52c850677d75e5d0b0ca245309b97e8ecbcfdc1dfdc4ab9fac35b39
+  url: http://www.openssl.org/source/openssl-3.2.1.tar.gz
+build:
+  no_link: lib/libcrypto.3.0.dylib
+  number: 1
+  run_exports:
+    - openssl >=3.2.1,<4.0a0
+  string: h0d3ecfb_1
+requirements:
+  build:
+    - clang_bootstrap_osx-arm64 16.0.6 h223edda_10
+    - make 4.3 h22f3db7_1
+    - perl 5.32.1 7_h10d778d_perl5
+  run:
+    - ca-certificates
+  run_constrained:
+    - pyopenssl >=22.1
+test:
+  commands:
+    - touch checksum.txt
+    - $PREFIX/bin/openssl sha256 checksum.txt
+    - pkg-config --print-errors --exact-version "3.2.1" openssl
+  requires:
+    - pkg-config
+about:
+  dev_url: https://github.com/openssl/openssl
+  doc_url: https://www.openssl.org/docs/man3.0/
+  home: http://www.openssl.org/
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE.txt
+  summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
+extra:
+  copy_test_source_files: true
+  feedstock-name: openssl
+  final: true
+  flow_run_id: azure_20240318.2.1
+  recipe-maintainers:
+    - h-vetinari
+    - jakirkham
+    - msarahan
+    - ocefpaf
+    - pelson
+  remote_url: https://github.com/conda-forge/openssl-feedstock
+  sha: f0405d0216596d5d846847ea3ecd565702634e45

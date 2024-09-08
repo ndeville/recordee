@@ -1,0 +1,22 @@
+{
+    "arch": "arm64",
+    "build": "h53f4e23_5",
+    "build_number": 5,
+    "channel": "conda-forge",
+    "constrains": [
+        "zlib 1.2.13 *_5"
+    ],
+    "depends": [],
+    "fn": "libzlib-1.2.13-h53f4e23_5.conda",
+    "license": "Zlib",
+    "license_family": "Other",
+    "md5": "1a47f5236db2e06a320ffa0392f81bd8",
+    "name": "libzlib",
+    "platform": "osx",
+    "sha256": "ab1c8aefa2d54322a63aaeeefe9cf877411851738616c4068e0dccc66b9c758a",
+    "size": 48102,
+    "subdir": "osx-arm64",
+    "timestamp": 1686575426584,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libzlib-1.2.13-h53f4e23_5.conda",
+    "version": "1.2.13"
+}

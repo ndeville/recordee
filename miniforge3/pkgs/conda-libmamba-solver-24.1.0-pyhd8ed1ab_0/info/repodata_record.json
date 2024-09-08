@@ -1,0 +1,25 @@
+{
+    "arch": null,
+    "build": "pyhd8ed1ab_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "boltons >=23.0.0",
+        "conda >=23.7.4",
+        "libmambapy >=1.5.6,<2.0a0",
+        "python >=3.8"
+    ],
+    "fn": "conda-libmamba-solver-24.1.0-pyhd8ed1ab_0.conda",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "304dc78ad6e52e0fd663df1d484c1531",
+    "name": "conda-libmamba-solver",
+    "noarch": "python",
+    "platform": null,
+    "sha256": "0667d49300062da2b46b04c097a9ace55c7a133d035517ec093e54a54f8f6b55",
+    "size": 41157,
+    "subdir": "noarch",
+    "timestamp": 1706566194042,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/conda-libmamba-solver-24.1.0-pyhd8ed1ab_0.conda",
+    "version": "24.1.0"
+}

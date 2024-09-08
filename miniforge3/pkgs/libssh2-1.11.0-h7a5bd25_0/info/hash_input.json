@@ -1,0 +1,6 @@
+{
+  "target_platform": "osx-arm64",
+  "zlib": "1.2",
+  "channel_targets": "conda-forge main",
+  "openssl": "3"
+}

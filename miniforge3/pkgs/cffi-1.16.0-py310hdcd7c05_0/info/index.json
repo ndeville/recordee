@@ -1,0 +1,18 @@
+{
+  "arch": "arm64",
+  "build": "py310hdcd7c05_0",
+  "build_number": 0,
+  "depends": [
+    "libffi >=3.4,<4.0a0",
+    "pycparser",
+    "python >=3.10,<3.11.0a0",
+    "python >=3.10,<3.11.0a0 *_cpython",
+    "python_abi 3.10.* *_cp310"
+  ],
+  "license": "MIT",
+  "name": "cffi",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1696002085787,
+  "version": "1.16.0"
+}

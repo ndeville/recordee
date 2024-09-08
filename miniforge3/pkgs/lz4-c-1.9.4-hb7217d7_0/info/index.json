@@ -1,0 +1,14 @@
+{
+  "arch": "arm64",
+  "build": "hb7217d7_0",
+  "build_number": 0,
+  "depends": [
+    "libcxx >=14.0.6"
+  ],
+  "license": "BSD-2-Clause",
+  "name": "lz4-c",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1674727268278,
+  "version": "1.9.4"
+}

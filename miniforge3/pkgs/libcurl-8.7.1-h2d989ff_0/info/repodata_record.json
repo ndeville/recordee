@@ -1,0 +1,26 @@
+{
+    "arch": "arm64",
+    "build": "h2d989ff_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "krb5 >=1.21.2,<1.22.0a0",
+        "libnghttp2 >=1.58.0,<2.0a0",
+        "libssh2 >=1.11.0,<2.0a0",
+        "libzlib >=1.2.13,<1.3.0a0",
+        "openssl >=3.2.1,<4.0a0",
+        "zstd >=1.5.5,<1.6.0a0"
+    ],
+    "fn": "libcurl-8.7.1-h2d989ff_0.conda",
+    "license": "curl",
+    "license_family": "MIT",
+    "md5": "34b9171710f0d9bf093d55bdc36ff355",
+    "name": "libcurl",
+    "platform": "osx",
+    "sha256": "973ac9368efca712a8fd19fe68524d7d9a3087fd88ad6b7fcdf60c3d2e19a498",
+    "size": 358080,
+    "subdir": "osx-arm64",
+    "timestamp": 1711548548174,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libcurl-8.7.1-h2d989ff_0.conda",
+    "version": "8.7.1"
+}

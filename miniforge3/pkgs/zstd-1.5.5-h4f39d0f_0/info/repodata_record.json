@@ -1,0 +1,21 @@
+{
+    "arch": "arm64",
+    "build": "h4f39d0f_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "libzlib >=1.2.13,<1.3.0a0"
+    ],
+    "fn": "zstd-1.5.5-h4f39d0f_0.conda",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "5b212cfb7f9d71d603ad891879dc7933",
+    "name": "zstd",
+    "platform": "osx",
+    "sha256": "7e1fe6057628bbb56849a6741455bbb88705bae6d6646257e57904ac5ee5a481",
+    "size": 400508,
+    "subdir": "osx-arm64",
+    "timestamp": 1693151393180,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.5-h4f39d0f_0.conda",
+    "version": "1.5.5"
+}

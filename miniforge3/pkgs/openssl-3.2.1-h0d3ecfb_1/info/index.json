@@ -1,0 +1,18 @@
+{
+  "arch": "arm64",
+  "build": "h0d3ecfb_1",
+  "build_number": 1,
+  "constrains": [
+    "pyopenssl >=22.1"
+  ],
+  "depends": [
+    "ca-certificates"
+  ],
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "name": "openssl",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1710793435903,
+  "version": "3.2.1"
+}

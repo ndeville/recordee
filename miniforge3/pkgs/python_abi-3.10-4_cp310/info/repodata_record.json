@@ -1,0 +1,22 @@
+{
+    "arch": "arm64",
+    "build": "4_cp310",
+    "build_number": 4,
+    "channel": "conda-forge",
+    "constrains": [
+        "python 3.10.* *_cpython"
+    ],
+    "depends": [],
+    "fn": "python_abi-3.10-4_cp310.conda",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "1a3d9c6bb5f0b1b22d9e9296c127e8c7",
+    "name": "python_abi",
+    "platform": "osx",
+    "sha256": "f69bac2f28082a275ef67313968b2c366d8236c3a6869b9cdf5cdb97a5821812",
+    "size": 6490,
+    "subdir": "osx-arm64",
+    "timestamp": 1695147522999,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/python_abi-3.10-4_cp310.conda",
+    "version": "3.10"
+}

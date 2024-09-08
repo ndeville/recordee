@@ -1,0 +1,95 @@
+{% set version = "3.2.1" %}
+
+package:
+  name: openssl_split
+  version: {{ version }}
+
+source:
+  url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
+  sha256: 83c7329fe52c850677d75e5d0b0ca245309b97e8ecbcfdc1dfdc4ab9fac35b39
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - nasm               # [win]
+    - make               # [unix]
+    - perl *
+  # Empty host section to ensure that this is identified as cb3
+  host:
+
+outputs:
+  - name: openssl
+    script: install_openssl.sh  # [unix]
+    script: install_openssl.bat  # [win]
+    build:
+      no_link: lib/libcrypto.so.3.0  # [linux]
+      no_link: lib/libcrypto.3.0.dylib  # [osx]
+      run_exports:
+        # openssl's versioning used to be X.Y.Z(rev), but is MAJOR.MINOR.PATCH since 3.0.0;
+        # see https://www.openssl.org/policies/releasestrat.html
+        - {{ pin_subpackage('openssl', max_pin='x') }}
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - make
+        - perl *
+      # Empty host section to ensure that this is identified as cb3
+      # FIXME: this doesn't seem to be enough. We need a compiler in build
+      # with `compiler` jinja used to not use legacy cb2 build==host
+      host:
+      run:
+        - ca-certificates
+        - ucrt             # [win]
+      run_constrained:
+        # ensure the solver doesn't run into a situation where it picks old pyopenssl and breaks, see
+        # https://github.com/conda-forge/pyopenssl-feedstock/issues/30; the symbol OpenSSL_add_all_algorithms
+        # is deprecated in OpenSSL and not available by default, it was present in pyopenssl until
+        # https://github.com/pyca/pyopenssl/commit/382e5e04410b8f07383b5fc5244a2d93b07b0baf
+        - pyopenssl >=22.1
+    test:
+      requires:
+        - pkg-config
+      commands:
+        - copy NUL checksum.txt        # [win]
+        - touch checksum.txt           # [unix]
+        - $PREFIX/bin/openssl sha256 checksum.txt       # [unix]
+        - '%LIBRARY_BIN%\openssl sha256 checksum.txt'   # [win]
+
+        # test pkgconfig metadata
+        - pkg-config --print-errors --exact-version "{{ version }}" openssl
+
+  - name: libopenssl-static
+    script: install_libopenssl-static.sh  # [unix]
+    script: install_libopenssl-static.bat  # [win]
+    requirements:
+      build:
+        - {{ compiler('c') }}
+      run:
+        - {{ pin_subpackage('openssl', exact=True) }}
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libcrypto.a                   # [unix]
+        - test -f ${PREFIX}/lib/libssl.a                      # [unix]
+        - if exist %LIBRARY_PREFIX%\lib\libcrypto_static.lib (exit 0) else (exit 1)  # [win]
+        - if exist %LIBRARY_PREFIX%\lib\libssl_static.lib (exit 0) else (exit 1)     # [win]
+
+about:
+  home: http://www.openssl.org/
+  license_file: LICENSE.txt
+  license: Apache-2.0
+  license_family: Apache
+  summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
+  dev_url: https://github.com/openssl/openssl
+  doc_url: https://www.openssl.org/docs/man3.0/
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - msarahan
+    - ocefpaf
+    - pelson
+    - h-vetinari
+  feedstock-name: openssl

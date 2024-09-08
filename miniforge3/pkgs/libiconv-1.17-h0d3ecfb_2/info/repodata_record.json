@@ -1,0 +1,18 @@
+{
+    "arch": "arm64",
+    "build": "h0d3ecfb_2",
+    "build_number": 2,
+    "channel": "conda-forge",
+    "depends": [],
+    "fn": "libiconv-1.17-h0d3ecfb_2.conda",
+    "license": "LGPL-2.1-only",
+    "md5": "69bda57310071cf6d2b86caf11573d2d",
+    "name": "libiconv",
+    "platform": "osx",
+    "sha256": "bc7de5097b97bcafcf7deaaed505f7ce02f648aac8eccc0d5a47cc599a1d0304",
+    "size": 676469,
+    "subdir": "osx-arm64",
+    "timestamp": 1702682458114,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libiconv-1.17-h0d3ecfb_2.conda",
+    "version": "1.17"
+}

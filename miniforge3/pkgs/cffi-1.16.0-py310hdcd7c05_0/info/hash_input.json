@@ -1,0 +1,10 @@
+{
+  "build_platform": "osx-64",
+  "python": "3.10.* *_cpython",
+  "channel_targets": "conda-forge main",
+  "c_compiler": "clang",
+  "libffi": "3.4",
+  "c_compiler_version": "15",
+  "CONDA_BUILD_SYSROOT": "/Applications/Xcode_13.2.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+  "target_platform": "osx-arm64"
+}

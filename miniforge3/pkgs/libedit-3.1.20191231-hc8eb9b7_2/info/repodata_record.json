@@ -1,0 +1,21 @@
+{
+    "arch": "arm64",
+    "build": "hc8eb9b7_2",
+    "build_number": 2,
+    "channel": "conda-forge",
+    "depends": [
+        "ncurses >=6.2,<7.0.0a0"
+    ],
+    "fn": "libedit-3.1.20191231-hc8eb9b7_2.tar.bz2",
+    "license": "BSD-2-Clause",
+    "license_family": "BSD",
+    "md5": "30e4362988a2623e9eb34337b83e01f9",
+    "name": "libedit",
+    "platform": "osx",
+    "sha256": "3912636197933ecfe4692634119e8644904b41a58f30cad9d1fc02f6ba4d9fca",
+    "size": 96607,
+    "subdir": "osx-arm64",
+    "timestamp": 1597616630749,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libedit-3.1.20191231-hc8eb9b7_2.tar.bz2",
+    "version": "3.1.20191231"
+}

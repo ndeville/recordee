@@ -1,0 +1,70 @@
+# This file created by conda-build 3.19.2
+# meta.yaml template originally from:
+# /Users/runner/work/1/s/recipe, last modified Sun Aug 16 22:18:54 2020
+# ------------------------------------------------
+
+package:
+    name: libedit
+    version: 3.1.20191231
+source:
+    fn: libedit-20191231-3.1.tar.gz
+    sha256: dbb82cb7e116a5f8025d35ef5b4f7d4a3cdd0a3909a146a39112095a2d229071
+    url: http://thrysoee.dk/editline/libedit-20191231-3.1.tar.gz
+build:
+    number: '2'
+    run_exports:
+        - libedit >=3.1.20191231,<3.2.0a0
+    string: hc8eb9b7_2
+requirements:
+    build:
+        - autoconf 2.69 pl526h1de35cc_9
+        - automake 1.16.2 pl526_1
+        - cctools_osx-arm64 949.0.1 ha30c52b_9
+        - clang 11.0.0.rc1 default_hf57f61e_0
+        - clang_osx-arm64 11.0.0.rc1 hd819f65_5
+        - clangxx 11.0.0.rc1 default_hf57f61e_0
+        - compiler-rt 11.0.0.rc1 h810911b_0
+        - compiler-rt_osx-64 11.0.0.rc1 h2a69e3a_0
+        - ld64_osx-arm64 530 h8c8ad8c_9
+        - libclang-cpp11 11.0.0.rc1 default_hf57f61e_0
+        - libcxx 11.0.0.rc1 h5f48129_0
+        - libllvm11 11.0.0.rc1 h009f743_3
+        - libtool 2.4.6 haf1e3a3_1003
+        - llvm-tools 11.0.0.rc1 h1341992_3
+        - m4 1.4.18 h1de35cc_1001
+        - make 4.3 h0b31af3_0
+        - perl 5.26.2 haec8ef5_1006
+        - tapi 1100.0.11 h879752b_0
+        - zlib 1.2.11 1007
+    host:
+        - libcxx 11.0.0.rc1 h5f48129_0
+        - ncurses 6.2 hc88da5d_1
+    run:
+        - ncurses >=6.2,<6.3.0a0
+test:
+    commands:
+        - test -f $PREFIX/lib/libedit.dylib
+        - test ! -f $PREFIX/lib/libedit.a
+about:
+    description: 'This is an autotool- and libtoolized port of the NetBSD Editline
+        library
+
+        (libedit). This Berkeley-style licensed command line editor library provides
+
+        generic line editing, history, and tokenization functions, similar to those
+
+        found in GNU Readline
+
+        '
+    home: http://thrysoee.dk/editline/
+    license: BSD-2-Clause
+    license_family: BSD
+    license_file: COPYING
+    summary: Editline Library (libedit)
+extra:
+    copy_test_source_files: true
+    final: true
+    recipe-maintainers:
+        - djsutherland
+        - mingwandroid
+        - scopatz

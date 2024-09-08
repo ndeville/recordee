@@ -1,0 +1,79 @@
+{
+  "paths": [
+    {
+      "_path": "include/reproc/drain.h",
+      "path_type": "hardlink",
+      "sha256": "85c4cf3387d3e3a05a737687d086c9e7cf241f2be9c4f55ddc566a9d1baecb99",
+      "size_in_bytes": 2931
+    },
+    {
+      "_path": "include/reproc/export.h",
+      "path_type": "hardlink",
+      "sha256": "adaf50bb4c4964fc17295f12d60dd128c7b4a2633b9dfbd1507dce8089371051",
+      "size_in_bytes": 451
+    },
+    {
+      "_path": "include/reproc/reproc.h",
+      "path_type": "hardlink",
+      "sha256": "4c7bfdc442b8ad363c0c43a5bb8a22f3352fb5df23a302992d8c9933ea9046a4",
+      "size_in_bytes": 18656
+    },
+    {
+      "_path": "include/reproc/run.h",
+      "path_type": "hardlink",
+      "sha256": "9979e373828d243e2261039a52a0f695f27b0e5eaf0cda2e00531f46094a2b54",
+      "size_in_bytes": 882
+    },
+    {
+      "_path": "lib/cmake/reproc/reproc-config-version.cmake",
+      "path_type": "hardlink",
+      "sha256": "fab43caadfc17993d460fab21d2f7ccae918001e41e61db7eb6386c3544c625e",
+      "size_in_bytes": 2765
+    },
+    {
+      "_path": "lib/cmake/reproc/reproc-config.cmake",
+      "path_type": "hardlink",
+      "sha256": "06befcb259155c51e608af2dade2b9489b0fa76c41343c193b5e073f142b203e",
+      "size_in_bytes": 1101
+    },
+    {
+      "_path": "lib/cmake/reproc/reproc-targets-release.cmake",
+      "path_type": "hardlink",
+      "sha256": "08b780c5867a9a1a70e7ed9f469427f7483055b1cfd878f22ecb7c4fa8419727",
+      "size_in_bytes": 829
+    },
+    {
+      "_path": "lib/cmake/reproc/reproc-targets.cmake",
+      "path_type": "hardlink",
+      "sha256": "3b49488ef144a152ab76bf9e887e82ae77bbcbcf3af7c4eb54930a13a1cd7f30",
+      "size_in_bytes": 3907
+    },
+    {
+      "_path": "lib/libreproc.14.2.4.dylib",
+      "path_type": "hardlink",
+      "sha256": "e479b91f9aa15c52efb26bc0d394ad8f964d9d7cc438bf4447f6e27127aebef4",
+      "size_in_bytes": 72288
+    },
+    {
+      "_path": "lib/libreproc.14.dylib",
+      "path_type": "softlink",
+      "sha256": "e479b91f9aa15c52efb26bc0d394ad8f964d9d7cc438bf4447f6e27127aebef4",
+      "size_in_bytes": 72288
+    },
+    {
+      "_path": "lib/libreproc.dylib",
+      "path_type": "softlink",
+      "sha256": "e479b91f9aa15c52efb26bc0d394ad8f964d9d7cc438bf4447f6e27127aebef4",
+      "size_in_bytes": 72288
+    },
+    {
+      "_path": "lib/pkgconfig/reproc.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/reproc-split_1698242167518/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+      "sha256": "b31dab6ef480042ef95e744789ebafa2dd2b6b140bfc9eacbf2e56ae70059e5c",
+      "size_in_bytes": 535
+    }
+  ],
+  "paths_version": 1
+}

@@ -1,0 +1,19 @@
+{
+    "arch": "arm64",
+    "build": "h642e427_1000",
+    "build_number": 1000,
+    "channel": "conda-forge",
+    "depends": [],
+    "fn": "lzo-2.10-h642e427_1000.tar.bz2",
+    "license": "GPL v2+",
+    "license_family": "GPL2",
+    "md5": "ddab5f96f5573a9bd5e24f9994fd6ec9",
+    "name": "lzo",
+    "platform": "osx",
+    "sha256": "ae029e5c16893071d29a11ddbfdbdb01b2ebf10d1785f54370934439d8b71817",
+    "size": 157236,
+    "subdir": "osx-arm64",
+    "timestamp": 1597683217947,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/lzo-2.10-h642e427_1000.tar.bz2",
+    "version": "2.10"
+}

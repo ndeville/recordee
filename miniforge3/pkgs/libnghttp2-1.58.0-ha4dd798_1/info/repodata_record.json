@@ -1,0 +1,27 @@
+{
+    "arch": "arm64",
+    "build": "ha4dd798_1",
+    "build_number": 1,
+    "channel": "conda-forge",
+    "depends": [
+        "__osx >=10.9",
+        "c-ares >=1.23.0,<2.0a0",
+        "libcxx >=16.0.6",
+        "libev >=4.33,<4.34.0a0",
+        "libev >=4.33,<5.0a0",
+        "libzlib >=1.2.13,<1.3.0a0",
+        "openssl >=3.2.0,<4.0a0"
+    ],
+    "fn": "libnghttp2-1.58.0-ha4dd798_1.conda",
+    "license": "MIT",
+    "license_family": "MIT",
+    "md5": "1813e066bfcef82de579a0be8a766df4",
+    "name": "libnghttp2",
+    "platform": "osx",
+    "sha256": "fc97aaaf0c6d0f508be313d86c2705b490998d382560df24be918b8e977802cd",
+    "size": 565451,
+    "subdir": "osx-arm64",
+    "timestamp": 1702130473930,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libnghttp2-1.58.0-ha4dd798_1.conda",
+    "version": "1.58.0"
+}

@@ -1,0 +1,62 @@
+# This file created by conda-build 3.22.0
+# meta.yaml template originally from:
+# /home/conda/recipe_root, last modified Sat Aug 27 12:52:35 2022
+# ------------------------------------------------
+
+package:
+  name: pysocks
+  version: 1.7.1
+source:
+  sha256: 3f8804571ebe159c380ac6de37643bb4685970655d3bba243530d6558b799aa0
+  url: https://pypi.io/packages/source/P/PySocks/PySocks-1.7.1.tar.gz
+build:
+  noarch: python
+  number: '6'
+  script: /home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla/bin/python
+    -m pip install . --no-deps -vv
+  string: pyha2e5f31_6
+requirements:
+  host:
+    - _libgcc_mutex 0.1 conda_forge
+    - _openmp_mutex 4.5 2_gnu
+    - bzip2 1.0.8 h7f98852_4
+    - ca-certificates 2022.6.15 ha878542_0
+    - ld_impl_linux-64 2.36.1 hea4e1c9_2
+    - libffi 3.4.2 h7f98852_5
+    - libgcc-ng 12.1.0 h8d9b700_16
+    - libgomp 12.1.0 h8d9b700_16
+    - libnsl 2.0.0 h7f98852_0
+    - libsqlite 3.39.2 h753d276_1
+    - libuuid 2.32.1 h7f98852_1000
+    - libzlib 1.2.12 h166bdaf_2
+    - ncurses 6.3 h27087fc_1
+    - openssl 3.0.5 h166bdaf_1
+    - pip 22.2.2 pyhd8ed1ab_0
+    - python 3.10.6 ha86cf86_0_cpython
+    - readline 8.1.2 h0f457ee_0
+    - setuptools 65.3.0 pyhd8ed1ab_1
+    - tk 8.6.12 h27826a3_0
+    - tzdata 2022c h191b570_0
+    - wheel 0.37.1 pyhd8ed1ab_0
+    - xz 5.2.6 h166bdaf_0
+  run:
+    - __unix
+    - python >=3.8
+test:
+  imports:
+    - socks
+about:
+  dev_url: https://github.com/Anorov/PySocks
+  doc_url: https://github.com/Anorov/PySocks/blob/master/README.md
+  home: https://github.com/Anorov/PySocks
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: A Python SOCKS client module. See https://github.com/Anorov/PySocks for
+    more information.
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - ocefpaf
+    - pmlandwehr

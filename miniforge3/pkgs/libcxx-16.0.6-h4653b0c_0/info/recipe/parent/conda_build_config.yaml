@@ -1,0 +1,18 @@
+c_compiler:          # [osx]
+  - clang_bootstrap  # [osx]
+cxx_compiler:        # [osx]
+  - clang_bootstrap  # [osx]
+
+# libcxx only supports the last released GCC version, see
+# https://libcxx.llvm.org/index.html#platform-and-compiler-support
+c_compiler_version:     # [linux]
+  - 12                  # [linux]
+cxx_compiler_version:   # [linux]
+  - 12                  # [linux]
+
+MACOSX_SDK_VERSION:  # [osx and x86_64]
+  - 10.14            # [osx and x86_64]
+
+dummy_var:              # [osx]
+  - 0                   # [osx and x86_64]
+  - 1                   # [osx and arm64]

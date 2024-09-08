@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "h13dd4ca_0",
+  "build_number": 0,
+  "depends": [
+    "libcxx >=15.0.7"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "yaml-cpp",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1695712959746,
+  "version": "0.8.0"
+}

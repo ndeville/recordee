@@ -1,0 +1,21 @@
+{
+    "arch": "arm64",
+    "build": "hb7217d7_0",
+    "build_number": 0,
+    "channel": "conda-forge",
+    "depends": [
+        "libcxx >=14.0.6"
+    ],
+    "fn": "lz4-c-1.9.4-hb7217d7_0.conda",
+    "license": "BSD-2-Clause",
+    "license_family": "BSD",
+    "md5": "45505bec548634f7d05e02fb25262cb9",
+    "name": "lz4-c",
+    "platform": "osx",
+    "sha256": "fc343b8c82efe40819b986e29ba748366514e5ab94a1e1138df195af5f45fa24",
+    "size": 141188,
+    "subdir": "osx-arm64",
+    "timestamp": 1674727268278,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/lz4-c-1.9.4-hb7217d7_0.conda",
+    "version": "1.9.4"
+}
