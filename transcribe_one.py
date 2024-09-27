@@ -23,6 +23,7 @@ print()
 # Transcribe One File
 
 import whisper
+from whisper.utils import get_writer
 import warnings
 # from whisper.utils import get_writer
 import re
@@ -48,7 +49,7 @@ warnings.filterwarnings("ignore", message="FP16 is not supported on CPU; using F
 
 def transcribe_file(file_path,model_size="medium"):
 
-    print(f"\n\nPROCESSING AS SINGLE RECORDING: {file_path}\n\n")
+    print(f"\n\n{datetime.now().strftime('%H:%M:%S')} PROCESSING AS SINGLE RECORDING: {file_path}\n\n")
 
     filepath_parts = Path(file_path).parts
     uid = filepath_parts[-1]
@@ -79,7 +80,7 @@ def transcribe_file(file_path,model_size="medium"):
 
     enriched_transcript = ai_transcript_processing(transcript)
 
-    final_transcript = f"# RAW TRANSCRIPT\n{file_path}\n\n{transcript}\n\n{enriched_transcript}"
+    final_transcript = f"## RAW TRANSCRIPT\n{file_path}\n\n{transcript}\n\n{enriched_transcript}"
 
     output_file = f"/Users/nic/Dropbox/Notes/kaltura/transcripts/{uid}.md"
     with open(output_file, 'w') as f:
@@ -89,9 +90,12 @@ def transcribe_file(file_path,model_size="medium"):
     # shutil.copy2(output_file, f"/Users/nic/Dropbox/Notes/kaltura/transcripts/{uid}.md")
     # print(f"\n{uid}.md copied to /Users/nic/Dropbox/Notes/kaltura/transcripts/")
 
-    # # SRT
-    # with open(f"{copy_to_path}/{uid}.srt", 'w') as srt:
-    #     write_srt(transcribe_object["segments"], file=srt)
+    # SRT
+    srt_writer = get_writer("srt", copy_to_path)
+    srt_output_file = f"{copy_to_path}/{uid}.srt"
+    srt_writer(result, srt_output_file)
+    print(f"\n{srt_output_file} created.")
+
 
     return transcript
 
