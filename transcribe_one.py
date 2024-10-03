@@ -47,7 +47,7 @@ TEST https://github.com/pyannote to diariaze speakers
 
 warnings.filterwarnings("ignore", message="FP16 is not supported on CPU; using FP32 instead")
 
-def transcribe_file(file_path,model_size="medium"):
+def transcribe_file(file_path,model_size="turbo"):
 
     print(f"\n\n{datetime.now().strftime('%H:%M:%S')} PROCESSING AS SINGLE RECORDING: {file_path}\n\n")
 
@@ -108,7 +108,12 @@ if __name__ == '__main__':
     # language = 'english'
 
     file_path = input(f"\nEnter file path to transcribe: ")
-    model_size = input(f"\nModel size (base.en, small.en, medium, medium.en, large): ")
+    model_size = input(f"\nModel size (base.en, small.en, medium, medium.en, large, turbo): ")
+
+    if model_size == "":
+        model_size = "turbo"
+    else:
+        model_size = model_size
 
     transcribe_file(file_path,model_size)
 
