@@ -108,14 +108,16 @@ if __name__ == '__main__':
     # language = 'english'
 
     file_path = input(f"\nEnter file path to transcribe: ")
-    model_size = input(f"\nModel size (base.en, small.en, medium, medium.en, large, turbo): ")
 
-    if model_size == "":
-        model_size = "turbo"
-    else:
-        model_size = model_size
+    # model_size = input(f"\nModel size (base.en, small.en, medium, medium.en, large, turbo) or just Enter for Turbo: ")
 
-    transcribe_file(file_path,model_size)
+    # if model_size == "":
+    #     model_size = "turbo"
+    # else:
+    #     model_size = model_size
+
+    # transcribe_file(file_path,model_size)
+    transcribe_file(file_path)
 
     # transcribe_file('/Users/nic/Movies/Recordings/240831-173202-test.mp4')
     print('-------------------------------')

@@ -47,57 +47,132 @@ TEST https://github.com/pyannote to diariaze speakers
 
 warnings.filterwarnings("ignore", message="FP16 is not supported on CPU; using FP32 instead")
 
-def transcribe_file(file_path,model_size="medium"):
 
+
+
+
+from datetime import datetime
+from pathlib import Path
+import os
+import shutil
+import whisper
+from pyannote.audio import Pipeline
+
+def transcribe_file(file_path, model_size="base"):
     print(f"\n\n{datetime.now().strftime('%H:%M:%S')} PROCESSING AS SINGLE RECORDING: {file_path}\n\n")
 
     filepath_parts = Path(file_path).parts
     uid = filepath_parts[-1]
     copy_to_path = os.path.abspath(os.path.join(file_path, os.pardir))
 
-    # Run model
+    # Convert video to audio if it's an MP4 file
+    if file_path.lower().endswith('.mp4'):
+        print("Converting video to audio...")
+        temp_audio_path = os.path.join(copy_to_path, f"{uid}_temp.wav")
+        try:
+            video = moviepy.editor.VideoFileClip(file_path)
+            video.audio.write_audiofile(temp_audio_path)
+            video.close()
+            diarization_audio_path = temp_audio_path
+        except Exception as e:
+            print(f"Error converting video to audio: {str(e)}")
+            diarization_audio_path = file_path
+    else:
+        diarization_audio_path = file_path
+
+    # Load Whisper model
     model = whisper.load_model(model_size)
 
-    # Transcribe the audio file
+    # Transcribe using original file (Whisper can handle MP4)
     result = model.transcribe(file_path)
 
-    # Extract the transcription from the result
+    # Extract the transcription
     transcript = result['text']
+    segments = result['segments']  # Segment timestamps for diarization
 
-    # print(f"\n\nTranscript:\n{transcript}\n\n")
-
-    # output = transcript
-
-    # output = f"\n{file}\ntranscribed: {ts_db} | {transcribe_language}\n---\n{transcript}\n\n"
-
-    ### txt
-    output_file = f"{copy_to_path}/{uid}.txt"
-    with open(output_file, 'w') as f:
+    # Save raw transcript
+    output_file_txt = f"{copy_to_path}/{uid}.txt"
+    with open(output_file_txt, 'w') as f:
         print(transcript, file=f)
-    print(f"\n{output_file} created.")
+    print(f"\n{output_file_txt} created.")
 
-    # Enriched Markdown
+    # Diarization using converted audio file
+    try:
+        hf_token = os.getenv("HUGGING_FACE_TOKEN")
+        if not hf_token:
+            print("Warning: HUGGING_FACE_TOKEN not found in .env file")
+            raise Exception("No HuggingFace token provided")
 
-    # enriched_transcript = ai_transcript_processing(transcript)
+        print(f"Attempting diarization with token: {hf_token[:4]}...")
+        pipeline = Pipeline.from_pretrained(
+            "pyannote/speaker-diarization",
+            use_auth_token=hf_token
+        )
+        
+        if pipeline is None:
+            raise Exception("Failed to initialize pipeline")
+            
+        diarization = pipeline(diarization_audio_path)
+        
+        # Combine diarization with transcription
+        diarized_transcript = []
+        for turn, _, speaker in diarization.itertracks(yield_label=True):
+            segment_texts = [
+                seg['text']
+                for seg in segments
+                if seg['start'] >= turn.start and seg['end'] <= turn.end
+            ]
+            speaker_text = " ".join(segment_texts)
+            diarized_transcript.append(f"[{speaker}] {speaker_text}")
 
-    # final_transcript = f"## RAW TRANSCRIPT\n{file_path}\n\n{transcript}\n\n{enriched_transcript}"
+        diarized_output = "\n".join(diarized_transcript)
+        
+    except Exception as e:
+        print(f"\nWarning: Diarization failed - {str(e)}")
+        print("\nPlease ensure you have:")
+        print("1. Added your HuggingFace token to .env file as HUGGING_FACE_TOKEN=your_token_here")
+        print("2. Accepted the user conditions at https://hf.co/pyannote/speaker-diarization")
+        diarized_output = "Diarization not available"
+        diarized_transcript = []
 
-    # output_file = f"/Users/nic/Dropbox/Notes/kaltura/transcripts/{uid}.md"
-    # with open(output_file, 'w') as f:
-    #     print(final_transcript, file=f)
+    # Clean up temporary audio file
+    if 'temp_audio_path' in locals() and os.path.exists(temp_audio_path):
+        try:
+            os.remove(temp_audio_path)
+        except Exception as e:
+            print(f"Warning: Could not remove temporary audio file: {str(e)}")
 
-    # # # Copy file to folder /Users/nic/Dropbox/Notes/kaltura/transcripts as Markdown
-    # # shutil.copy2(output_file, f"/Users/nic/Dropbox/Notes/kaltura/transcripts/{uid}.md")
-    # # print(f"\n{uid}.md copied to /Users/nic/Dropbox/Notes/kaltura/transcripts/")
+    # Save diarized transcript
+    output_file_diarized = f"{copy_to_path}/{uid}_diarized.txt"
+    with open(output_file_diarized, 'w') as f:
+        print(diarized_output, file=f)
+    print(f"\n{output_file_diarized} created.")
 
-    # # SRT
-    # srt_writer = get_writer("srt", copy_to_path)
-    # srt_output_file = f"{copy_to_path}/{uid}.srt"
-    # srt_writer(result, srt_output_file)
-    # print(f"\n{srt_output_file} created.")
+    # Save enriched Markdown version
+    enriched_transcript = ai_transcript_processing(transcript)
+    final_transcript = f"## RAW TRANSCRIPT\n{file_path}\n\n{transcript}\n\n## DIARIZED TRANSCRIPT\n\n{diarized_output}\n\n{enriched_transcript}"
+    output_file_md = f"/Users/nic/Dropbox/Notes/kaltura/transcripts/{uid}.md"
+    with open(output_file_md, 'w') as f:
+        print(final_transcript, file=f)
+    print(f"\n{output_file_md} created.")
+
+    # Save SRT
+    srt_writer = get_writer("srt", copy_to_path)
+    srt_output_file = f"{copy_to_path}/{uid}.srt"
+    srt_writer(result, srt_output_file)
+    print(f"\n{srt_output_file} created.")
+
+    return transcript, diarized_transcript
 
 
-    return transcript
+
+
+
+
+
+
+
+
 
 
 ########################################################################################################
@@ -107,8 +182,13 @@ if __name__ == '__main__':
     # processing(file=sys.argv[1])
     # language = 'english'
 
-    file_path = "/Users/nic/Downloads/241003 test.m4a"
-    model_size = "large"
+    file_path = input(f"\nEnter file path to transcribe: ")
+    model_size = input(f"\nModel size (base.en, small.en, medium, medium.en, large, turbo) or just Enter for Turbo: ")
+
+    if model_size == "":
+        model_size = "turbo"
+    else:
+        model_size = model_size
 
     transcribe_file(file_path,model_size)
 
